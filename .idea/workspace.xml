@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9a4f4877-d06b-41f0-a138-37a960998ee2" name="Default" comment="" />
+    <ignored path="development.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="development" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="config.inc.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/config.inc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="686" column="27" selection-start-line="686" selection-start-column="17" selection-end-line="686" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ez_sql_core.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/ezSQL/ez_sql_core.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding>
+                <marker date="1457232892000" expanded="true" signature="11933:11988" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/conf/config.inc.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 5.6" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
+    <option name="width" value="1903" />
+    <option name="height" value="1002" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+  </component>
+  <component name="RunManager" selected="PHP Built-in Web Server.Doctor">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpHttpRequestRunConfigurationType" factoryName="PHP HTTP Request">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application">
+      <method />
+    </configuration>
+    <configuration default="false" name="Doctor" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/../" port="8080">
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="PHP Built-in Web Server.Doctor" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9a4f4877-d06b-41f0-a138-37a960998ee2" name="Default" comment="" />
+      <created>1506684564708</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1506684564708</updated>
+      <workItem from="1506684566217" duration="3890000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3890000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="22" width="1903" height="1002" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2041913" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/service/data/class.mysqldb.new.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-300">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1498844638000" expanded="true" signature="354:390" ph="select * fro... scad_checkin" />
+            <marker date="1498844638000" expanded="true" signature="591:722" ph="SELECT docto... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1498844638000" expanded="true" signature="952:1343" ph="SELECT scad_... scad_doctor_speciality" />
+            <marker date="1498844638000" expanded="true" signature="1475:1847" ph="SELECT scad_... scad_doctor_insurance" />
+            <marker date="1498844638000" expanded="true" signature="1980:2247" ph="SELECT scad_... scad_doctor_languages" />
+            <marker date="1498844638000" expanded="true" signature="2383:2671" ph="SELECT scad_... scad_doctor_appointments" />
+            <marker date="1498844638000" expanded="true" signature="2798:3017" ph="SELECT scad_... scad_ratings" />
+            <marker date="1498844638000" expanded="true" signature="3173:3243" ph="SELECT * FRO... ${DB_PREFIX}checkin" />
+            <marker date="1498844638000" expanded="true" signature="3587:3654" ph="SELECT ${$ke... ${DB_PREFIX}" />
+            <marker date="1498844638000" expanded="true" signature="4144:4209" ph="SELECT * FRO... ${DB_PREFIX}users" />
+            <marker date="1498844638000" expanded="true" signature="4456:4557" ph="SELECT * FRO... ${DB_PREFIX}users" />
+            <marker date="1498844638000" expanded="true" signature="4738:4801" ph="SELECT * FRO... ${DB_PREFIX}users" />
+            <marker date="1498844638000" expanded="true" signature="4976:5097" ph="SELECT id,fi... ${DB_PREFIX}users" />
+            <marker date="1498844638000" expanded="true" signature="5293:5443" ph="SELECT id,fi... ${DB_PREFIX}users" />
+            <marker date="1498844638000" expanded="true" signature="5625:5796" ph="SELECT spcl.... ${DB_PREFIX}speciality" />
+            <marker date="1498844638000" expanded="true" signature="5992:6192" ph="SELECT spcl.... ${DB_PREFIX}speciality" />
+            <marker date="1498844638000" expanded="true" signature="6372:6446" ph="SELECT * FRO... ${DB_PREFIX}languages" />
+            <marker date="1498844638000" expanded="true" signature="6641:6744" ph="SELECT * FRO... ${DB_PREFIX}languages" />
+            <marker date="1498844638000" expanded="true" signature="6941:7015" ph="SELECT * FRO... ${DB_PREFIX}insurance" />
+            <marker date="1498844638000" expanded="true" signature="7212:7315" ph="SELECT * FRO... ${DB_PREFIX}insurance" />
+            <marker date="1498844638000" expanded="true" signature="7501:7583" ph="SELECT * FRO... ${DB_PREFIX}location" />
+            <marker date="1498844638000" expanded="true" signature="7778:7889" ph="SELECT * FRO... ${DB_PREFIX}location" />
+            <marker date="1498844638000" expanded="true" signature="8161:8363" ph="SELECT A.`do... ${DB_PREFIX}ratings" />
+            <marker date="1498844638000" expanded="true" signature="8645:8876" ph="SELECT A.`do... ${DB_PREFIX}ratings" />
+            <marker date="1498844638000" expanded="true" signature="9062:9164" ph="SELECT count... ${DB_PREFIX}ratings" />
+            <marker date="1498844638000" expanded="true" signature="9355:9439" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1498844638000" expanded="true" signature="9661:9807" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1498844638000" expanded="true" signature="10014:10191" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1498844638000" expanded="true" signature="13091:13159" ph="SELECT Count... ${DB_PREFIX}users" />
+            <marker date="1498844638000" expanded="true" signature="13351:13473" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1498844638000" expanded="true" signature="16436:16515" ph="SELECT `name... ${DB_PREFIX}speciality" />
+            <marker date="1498844638000" expanded="true" signature="16709:16813" ph="SELECT `name... ${DB_PREFIX}userimages" />
+            <marker date="1498844638000" expanded="true" signature="16990:17124" ph="SELECT `id`,... ${DB_PREFIX}userimages" />
+            <marker date="1498844638000" expanded="true" signature="17310:17396" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1498844638000" expanded="true" signature="17589:17662" ph="SELECT * FRO... ${DB_PREFIX}ratings" />
+            <marker date="1498844638000" expanded="true" signature="17848:17919" ph="SELECT * FRO... ${DB_PREFIX}users" />
+            <marker date="1498844638000" expanded="true" signature="18127:18560" ph="SELECT APNT.... scad_doctor_appointments" />
+            <marker date="1498844638000" expanded="true" signature="19428:19475" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1498844638000" expanded="true" signature="19680:19727" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1498844638000" expanded="true" signature="20102:20139" ph="SELECT ${$ke... ${$table}" />
+            <marker date="1498844638000" expanded="true" signature="20835:20872" ph="SELECT ${$ke... ${$table}" />
+            <marker date="1498844638000" expanded="true" signature="21389:21448" ph="SELECT party... party" />
+            <marker date="1498844638000" expanded="true" signature="21627:21894" ph="SELECT pty.p... user" />
+            <marker date="1498844638000" expanded="true" signature="22361:22545" ph="SELECT spc.n... ${DB_PREFIX}" />
+            <marker date="1498844638000" expanded="true" signature="23018:23198" ph="SELECT spc.n... ${DB_PREFIX}" />
+            <marker date="1498844638000" expanded="true" signature="23674:23855" ph="SELECT spc.n... ${DB_PREFIX}" />
+            <marker date="1498844638000" expanded="true" signature="24045:24104" ph="select * fro... party_person_vw" />
+            <marker date="1498844638000" expanded="true" signature="24282:24485" ph="SELECT GROUP... education_relation" />
+            <marker date="1498844638000" expanded="true" signature="24671:24790" ph="SELECT party... party" />
+            <marker date="1498844638000" expanded="true" signature="24966:25042" ph="SELECT educa... education_relation" />
+            <marker date="1498844638000" expanded="true" signature="25332:25406" ph="SELECT langu... langugae_relation" />
+            <marker date="1498844638000" expanded="true" signature="26928:26972" ph="DELETE FROM " />
+            <marker date="1498844638000" expanded="true" signature="27148:27508" ph="SELECT pty.p... party" />
+            <marker date="1498844638000" expanded="true" signature="27697:28081" ph="SELECT pty.p... party" />
+            <marker date="1498844638000" expanded="true" signature="28254:28540" ph="SELECT pty.p... party" />
+            <marker date="1498844638000" expanded="true" signature="28710:28747" ph="INSERT INTO `${DB_PREFIX}`... " />
+            <marker date="1498844638000" expanded="true" signature="29362:29407" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1498844638000" expanded="true" signature="29596:29641" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1498844638000" expanded="true" signature="29827:29841" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1498844638000" expanded="true" signature="30063:30165" ph="SELECT * FRO... ${DB_PREFIX}user" />
+            <marker date="1498844638000" expanded="true" signature="30346:30472" ph="INSERT INTO `${DB_PREFIX}usersession`... " />
+            <marker date="1498844638000" expanded="true" signature="30543:30623" ph="SELECT * FRO... ${DB_PREFIX}usersession" />
+            <marker date="1498844638000" expanded="true" signature="30797:30834" ph="SELECT * FRO... ${DB_PREFIX}user" />
+            <marker date="1498844638000" expanded="true" signature="31700:31805" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1498844638000" expanded="true" signature="31992:32124" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1498844638000" expanded="true" signature="32307:32370" ph="SELECT * FRO... ${DB_PREFIX}users" />
+            <marker date="1498844638000" expanded="true" signature="32563:32666" ph="SELECT * FRO... ${DB_PREFIX}ratings" />
+            <marker date="1498844638000" expanded="true" signature="32850:32925" ph="SELECT * FRO... ${DB_PREFIX}ratings" />
+            <marker date="1498844638000" expanded="true" signature="33123:33245" ph="SELECT * FRO... ${DB_PREFIX}ratings" />
+            <marker date="1498844638000" expanded="true" signature="36328:36404" ph="SELECT * FRO... ${$sTable}" />
+            <marker date="1498844638000" expanded="true" signature="38756:38789" ph="SELECT ${$fi... ${$sTable}" />
+            <marker date="1498844638000" expanded="true" signature="39001:39029" ph="SELECT * FRO... ${$sTable}" />
+            <marker date="1498844638000" expanded="true" signature="43132:43271" ph="SELECT ${$sT... ${$sTable}" />
+            <marker date="1498844638000" expanded="true" signature="49881:49981" ph="SELECT ${$sF... ${$sTable}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/distance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/data/class.mysqldb.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-345">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+          <folding>
+            <marker date="1504895402000" expanded="true" signature="337:373" ph="select * fro... scad_checkin" />
+            <marker date="1504895402000" expanded="true" signature="562:693" ph="SELECT docto... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1504895402000" expanded="true" signature="910:1298" ph="SELECT scad_... scad_doctor_speciality" />
+            <marker date="1504895402000" expanded="true" signature="1424:1793" ph="SELECT scad_... scad_doctor_insurance" />
+            <marker date="1504895402000" expanded="true" signature="1919:2184" ph="SELECT scad_... scad_doctor_languages" />
+            <marker date="1504895402000" expanded="true" signature="2313:2599" ph="SELECT scad_... scad_doctor_appointments" />
+            <marker date="1504895402000" expanded="true" signature="2720:2937" ph="SELECT scad_... scad_ratings" />
+            <marker date="1504895402000" expanded="true" signature="3084:3154" ph="SELECT * FRO... ${DB_PREFIX}checkin" />
+            <marker date="1504895402000" expanded="true" signature="3484:3551" ph="SELECT ${$ke... ${DB_PREFIX}" />
+            <marker date="1504895402000" expanded="true" signature="3974:4039" ph="SELECT * FRO... ${DB_PREFIX}users" />
+            <marker date="1504895402000" expanded="true" signature="4220:4321" ph="SELECT * FRO... ${DB_PREFIX}users" />
+            <marker date="1504895402000" expanded="true" signature="4491:4554" ph="SELECT * FRO... ${DB_PREFIX}users" />
+            <marker date="1504895402000" expanded="true" signature="4718:4839" ph="SELECT id,fi... ${DB_PREFIX}users" />
+            <marker date="1504895402000" expanded="true" signature="5023:5173" ph="SELECT id,fi... ${DB_PREFIX}users" />
+            <marker date="1504895402000" expanded="true" signature="5343:5514" ph="SELECT spcl.... ${DB_PREFIX}speciality" />
+            <marker date="1504895402000" expanded="true" signature="5698:5898" ph="SELECT spcl.... ${DB_PREFIX}speciality" />
+            <marker date="1504895402000" expanded="true" signature="6066:6140" ph="SELECT * FRO... ${DB_PREFIX}languages" />
+            <marker date="1504895402000" expanded="true" signature="6323:6426" ph="SELECT * FRO... ${DB_PREFIX}languages" />
+            <marker date="1504895402000" expanded="true" signature="6606:6680" ph="SELECT * FRO... ${DB_PREFIX}insurance" />
+            <marker date="1504895402000" expanded="true" signature="6865:6968" ph="SELECT * FRO... ${DB_PREFIX}insurance" />
+            <marker date="1504895402000" expanded="true" signature="7140:7222" ph="SELECT * FRO... ${DB_PREFIX}location" />
+            <marker date="1504895402000" expanded="true" signature="7405:7516" ph="SELECT * FRO... ${DB_PREFIX}location" />
+            <marker date="1504895402000" expanded="true" signature="7773:7975" ph="SELECT A.`do... ${DB_PREFIX}ratings" />
+            <marker date="1504895402000" expanded="true" signature="8244:8475" ph="SELECT A.`do... ${DB_PREFIX}ratings" />
+            <marker date="1504895402000" expanded="true" signature="8649:8751" ph="SELECT count... ${DB_PREFIX}ratings" />
+            <marker date="1504895402000" expanded="true" signature="8930:9014" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1504895402000" expanded="true" signature="9224:9370" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1504895402000" expanded="true" signature="9566:9743" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1504895402000" expanded="true" signature="12678:12746" ph="SELECT Count... ${DB_PREFIX}users" />
+            <marker date="1504895402000" expanded="true" signature="12926:13048" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1504895402000" expanded="true" signature="16056:16135" ph="SELECT `name... ${DB_PREFIX}speciality" />
+            <marker date="1504895402000" expanded="true" signature="16315:16419" ph="SELECT `name... ${DB_PREFIX}userimages" />
+            <marker date="1504895402000" expanded="true" signature="16585:16719" ph="SELECT `id`,... ${DB_PREFIX}userimages" />
+            <marker date="1504895402000" expanded="true" signature="16894:16980" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1504895402000" expanded="true" signature="17159:17232" ph="SELECT * FRO... ${DB_PREFIX}ratings" />
+            <marker date="1504895402000" expanded="true" signature="17407:17478" ph="SELECT * FRO... ${DB_PREFIX}users" />
+            <marker date="1504895402000" expanded="true" signature="17674:18106" ph="SELECT APNT.... scad_doctor_appointments" />
+            <marker date="1504895402000" expanded="true" signature="18940:18987" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1504895402000" expanded="true" signature="19180:19227" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1504895402000" expanded="true" signature="19586:19623" ph="SELECT ${$ke... ${$table}" />
+            <marker date="1504895402000" expanded="true" signature="20293:20330" ph="SELECT ${$ke... ${$table}" />
+            <marker date="1504895402000" expanded="true" signature="20824:20883" ph="SELECT party... party" />
+            <marker date="1504895402000" expanded="true" signature="21049:21316" ph="SELECT pty.p... user" />
+            <marker date="1504895402000" expanded="true" signature="21768:21952" ph="SELECT spc.n... ${DB_PREFIX}" />
+            <marker date="1504895402000" expanded="true" signature="22410:22590" ph="SELECT spc.n... ${DB_PREFIX}" />
+            <marker date="1504895402000" expanded="true" signature="23050:23231" ph="SELECT spc.n... ${DB_PREFIX}" />
+            <marker date="1504895402000" expanded="true" signature="23406:23465" ph="select * fro... party_person_vw" />
+            <marker date="1504895402000" expanded="true" signature="23631:23834" ph="SELECT GROUP... education_relation" />
+            <marker date="1504895402000" expanded="true" signature="24006:24125" ph="SELECT party... party" />
+            <marker date="1504895402000" expanded="true" signature="24289:24365" ph="SELECT educa... education_relation" />
+            <marker date="1504895402000" expanded="true" signature="24638:24712" ph="SELECT langu... langugae_relation" />
+            <marker date="1504895402000" expanded="true" signature="26173:26217" ph="DELETE FROM " />
+            <marker date="1504895402000" expanded="true" signature="26381:26741" ph="SELECT pty.p... party" />
+            <marker date="1504895402000" expanded="true" signature="26918:27302" ph="SELECT pty.p... party" />
+            <marker date="1504895402000" expanded="true" signature="27463:27749" ph="SELECT pty.p... party" />
+            <marker date="1504895402000" expanded="true" signature="27906:27943" ph="INSERT INTO `${DB_PREFIX}`... " />
+            <marker date="1504895402000" expanded="true" signature="28514:28559" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1504895402000" expanded="true" signature="28785:28830" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1504895402000" expanded="true" signature="29004:29018" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1504895402000" expanded="true" signature="29227:29329" ph="SELECT * FRO... ${DB_PREFIX}user" />
+            <marker date="1504895402000" expanded="true" signature="29498:29624" ph="INSERT INTO `${DB_PREFIX}usersession`... " />
+            <marker date="1504895402000" expanded="true" signature="29692:29772" ph="SELECT * FRO... ${DB_PREFIX}usersession" />
+            <marker date="1504895402000" expanded="true" signature="29934:29971" ph="SELECT * FRO... ${DB_PREFIX}user" />
+            <marker date="1504895402000" expanded="true" signature="30811:30940" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1504895402000" expanded="true" signature="31116:31248" ph="SELECT * FRO... ${DB_PREFIX}doctor_appointments" />
+            <marker date="1504895402000" expanded="true" signature="31420:31483" ph="SELECT * FRO... ${DB_PREFIX}users" />
+            <marker date="1504895402000" expanded="true" signature="31664:31767" ph="SELECT * FRO... ${DB_PREFIX}ratings" />
+            <marker date="1504895402000" expanded="true" signature="31937:32012" ph="SELECT * FRO... ${DB_PREFIX}ratings" />
+            <marker date="1504895402000" expanded="true" signature="32198:32320" ph="SELECT * FRO... ${DB_PREFIX}ratings" />
+            <marker date="1504895402000" expanded="true" signature="35290:35362" ph="SELECT * FRO... ${$sTable}" />
+            <marker date="1504895402000" expanded="true" signature="37647:37678" ph="SELECT ${$fi... ${$sTable}" />
+            <marker date="1504895402000" expanded="true" signature="37879:37905" ph="SELECT * FRO... ${$sTable}" />
+            <marker date="1504895402000" expanded="true" signature="41873:42008" ph="SELECT ${$sT... ${$sTable}" />
+            <marker date="1504895402000" expanded="true" signature="48416:48511" ph="SELECT ${$sF... ${$sTable}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ezSQL/ez_sql_core.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <marker date="1457232892000" expanded="true" signature="11933:11988" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/config.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="686" column="27" selection-start-line="686" selection-start-column="17" selection-end-line="686" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
