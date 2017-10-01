@@ -7,7 +7,6 @@ foreach ($resu as $key => $value) {
   $res[]= $scad->getDocDetails($value['doctor_id']);
 }  //  print_r($res);exit;
 ?>
-
 <link rel="stylesheet" href="<?php echo WEB_ROOT?>service/public/css/setting_pg.css">
 <script type='text/javascript' src='<?php echo WEB_ROOT?>service/public/js/doctor-profile-settings.js'></script>
 <script type="text/javascript">
@@ -18,7 +17,6 @@ foreach ($resu as $key => $value) {
     });
   </script>
   <style>
-
     .input-block {
       box-sizing: border-box;
       display: block;
@@ -34,11 +32,14 @@ foreach ($resu as $key => $value) {
     width:20%;
     margin-top:5%;
   }
+  .dc_spec p {
+  	margin: 0;
+  	padding: 0;
+  }
+	
 </style>
 <!-- Past visited doctors script -->
-
 <style>
-
 </style>
 <script>
   $( document ).ready(function() {
@@ -65,7 +66,6 @@ foreach ($resu as $key => $value) {
         }
       });
     }
-
   });
    function test(){
      alert("in test");    
@@ -74,16 +74,12 @@ foreach ($resu as $key => $value) {
 //var n=$("#userIdf").val();
 var i = $(this).parent().find("#userIdf").val();
 //alert(i); 
-
-
-
 var ovrall=$("input[name='rating']:checked").val();
       // alert(ovrall);
       var bsidemnr=$("input[name='rating2']:checked").val();
       // alert(bsidemnr);
       var waiting=$("input[name='rating3']:checked").val();
       // alert(waiting);
-
       var msg =$("#message").val();
       var userget=$("#userid").val();
       //alert(userget);
@@ -91,39 +87,25 @@ var ovrall=$("input[name='rating']:checked").val();
       //alert(docId);
       $.ajax({
         type: 'POST', 
-
         url: SITEURL+'patient/profile/ratingaction',
         data: {"ovrall":ovrall , "bsidemnr":bsidemnr , "waiting":waiting , "msg":msg , "userget":userget , "docId":docId },
         success: function(res)
         {
           $("#rateModl").modal('hide');
-
         }
-
       });
-
 //*ajax end   
-
-
-
 });
-
 //id request 
 $(".cancel").click(function(){
-
-
  $("#rateModl").modal('hide');
 //alert ("ok");
-
 });
-
 }
-
 $(".ratng").click(function(e)
 {
   e.preventDefault();
   var sum= $(this).attr("target");
-
   // alert (sum);
   
   $.ajax({
@@ -131,10 +113,8 @@ $(".ratng").click(function(e)
     url: SITEURL+'patient/profile/ratingpopup',
     data: {"sum":sum},
     success: function(res)
-
     {
       //console.log(res);
-
       $("#rateModl").html(res);$('#rateModl').modal('show');        
       $('.submit').show();
       test();
@@ -148,28 +128,19 @@ $(".ratng").click(function(e)
       $(".here").html(res);
     }*/
   }
-
-
 });
-
 //submitclickaction();
 //alert ("ok"); 
-
 });
-
-
-
 });
   
 </script>
 <main id="main" class="tg-haslayout">
   <section class="tg-main-section tg-haslayout">
-
    <div class="container">
-
     <div class="row study">
      <ul class="tabs" id="docTab" style="list-style:none; padding:0; margin:0;">
-       <li class="active" ><a  href="#doc-visited">Past Visited Doctors</a></li>
+       <li class="active" ><a  href="#doc-visited">My Doctors</a></li>
        <li><a href="#past-appointments">Past Appointments</a></li>
        <li><a href="#ImmunizationReq">Immunization Req</a></li>
        <li><a href="#PrescriptionReq">Prescription Refill</a></li>
@@ -179,7 +150,6 @@ $(".ratng").click(function(e)
       <div class="tab-pane active" id="doc-visited">
         <div class="row">
         </div>
-
         <div class="row">
           <div class="col-md-9 col-sm-12 col-xs-12">
            <ul class="welcomes">
@@ -226,6 +196,19 @@ $(".ratng").click(function(e)
                 <div class="name">
                  <h3><?php echo $value['firstname']." ".$value['lastname'];?></h3>
                </div>
+				<div class="dc_spec">
+					<p><?php 
+						$specialities = $scad->getDocSpeciality($val['doctor_id']);
+						if(!empty($specialities)){
+							foreach($specialities as $spec){
+								$final[] = $spec['name'];
+							}
+							echo implode(", ",$final);
+						}else{
+							echo "No Speciality";
+						}
+					?></p>
+				</div>
                <input type="hidden" value="<?php echo $val['doctor_id'];?>" id="userIdf">
                <input type="hidden" value="<?php echo $_SESSION['userID'];?>" id="userid">
                <span class="rating rate">
@@ -241,10 +224,8 @@ $(".ratng").click(function(e)
                 <label class="rating-star" for="rating-input-<?php echo $i; ?>-1"></label>
               </span>
               <?php
-
               $co=$scad->AppoinmentCount($val['doctor_id']);
               $totl= $co[0]["count(doctor_id)"];  
-
               ?>
               <div class="prodt">
                 <?php
@@ -257,7 +238,11 @@ $(".ratng").click(function(e)
                     <span> Rate</span>
                   </a>
                   <?php } else{?>
-                  <a href="#" class="ratng" id="docid1" datasrc="5" target="<?php echo $val['doctor_id'] ;?>">
+                  <!--<a href="#" class="ratng" id="docid1" datasrc="5" target="<?php echo $val['doctor_id'] ;?>">
+                    <i class="fa fa-star-half-o"></i>
+                    <span> Rated</span>
+                  </a>-->
+                  <a href="javascript:void();" class=""  datasrc="5" target="<?php echo $val['doctor_id'] ;?>">
                     <i class="fa fa-star-half-o"></i>
                     <span> Rated</span>
                   </a>
@@ -275,12 +260,18 @@ $(".ratng").click(function(e)
                     <span>Book Again</span>
                   </a>
                 </div>
-                <div class="prodt">
+				<div class="prodt">
+                  <a href="tel:<?php echo $value['phone'];?>">
+                    <i class="fa fa-phone"></i>
+                    <span><?php echo $value['phone'];?></span>
+                  </a>
+                </div>
+                <!--<div class="prodt">
                   <a href="mailto:<?php echo $value['email'];?>">
                     <i class="fa fa-envelope-o"></i>
                     <span><?php echo $value['email'];?></span>
                   </a>
-                </div>
+                </div>-->
                 <div class="prodt">
                   <a  href="javascript:void(0);">
                     <i class="fa"></i>
@@ -335,7 +326,6 @@ $(".ratng").click(function(e)
      </ul>
    </div>
    <div style="padding:0;" class="col-md-3">
-
      <div class="upcoming">
       <div class="upcoming_head">
         <img src="<?php echo WEB_ROOT?>service/public/images/images/clock.png">
@@ -381,7 +371,6 @@ $(".ratng").click(function(e)
             <?php } }else{?>
             <p class="no_data">No data to display</p>
             <?php } ?>
-
           </div>
         </div>
       </div>
@@ -389,7 +378,6 @@ $(".ratng").click(function(e)
   </div>
   <div class="between"></div>
   <div class="modal fade" tabindex="-1" role="dialog" id="rateModl">
-
   </div><!-- /.modal -->
 </div>
 </div>
@@ -399,13 +387,11 @@ $(".ratng").click(function(e)
      <div id="apntEdit" style="left:240px;position: absolute;top: 140px;width: 400px;z-index: 999999; display:none;" role="alert" class="alert alert-success">
       Your changes saved successfully.
     </div>
-
     <?php if(empty($resu)){ ?>
     <div style=" color:#ccc; font-size: 31px;text-align:center">No data to display</div>
     <?php } else{?> 
     <div style="overflow-x:auto;height:500px">
       <table class="table  table-striped past_app" >
-
         <thead>
           <tr>
             <th colspan="">Doctor</th>
@@ -414,7 +400,6 @@ $(".ratng").click(function(e)
             <th colspan="">Time Visited</th>
           </tr>
         </thead>
-
         <tbody>
           <?php
           $i=0;  
@@ -422,17 +407,14 @@ $(".ratng").click(function(e)
               //echo $val['illness'];
             //print_r($val);
             $res= $scad->getDocDetails($val['doctor_id']);
-
             foreach ($res as $key => $value) {
                         //echo $val['illness'];
               //print_r($val);exit;
                       //print_r($value);exit;
               ?>  
-
               <tr>          
                 <td data-label="Doc Name" ><?php echo $value['firstname']." ".$value['lastname'];?></td>            
                 <td data-label="Illness"class="name"><?php  if(empty($val['illness'])){echo "No response";}else{echo $val['illness'];}?></td>
-
                 <td data-label="Appoinment Date"><?php echo $newDate = date("d-m-Y", strtotime($val['apnt_date'])); ?></td>
                 <td data-label="Appoinment Time"><?php echo $newDate = date("H:i:s a", strtotime($val['apnt_starttime'])); ?></td>
                 <?php           
@@ -443,7 +425,6 @@ $(".ratng").click(function(e)
             ?>
           </tbody>
         </table> 
-
         <?php } ?>      
       </div>
     </div>
@@ -460,7 +441,6 @@ $(".ratng").click(function(e)
             <input id="textinput" name="textinput" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
           </div>
         </div>
-
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="DateOfBirth">Date of Birth</label>  
@@ -468,7 +448,6 @@ $(".ratng").click(function(e)
             <input id="DateOfBirth" name="DateOfBirth" placeholder="Use the format MM/DD/YYY" class="form-control input-md" required="" type="text">
           </div>
         </div>
-
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="parentName">Parent or Guardian's Name</label>  
@@ -476,7 +455,6 @@ $(".ratng").click(function(e)
             <input id="parentName" name="parentName" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
           </div>
         </div>
-
         <!-- Select Basic -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="physician">Primary Care Physician</label>
@@ -485,7 +463,6 @@ $(".ratng").click(function(e)
             </select>
           </div>
         </div>
-
         <!-- Select Basic -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="preferredOffice">Preferred Office</label>
@@ -494,7 +471,6 @@ $(".ratng").click(function(e)
             </select>
           </div>
         </div>
-
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="contactNum">Primary Phone</label>  
@@ -502,7 +478,6 @@ $(".ratng").click(function(e)
             <input id="contactNum" name="contactNum" placeholder="use the format 317-555-1212" class="form-control input-md" required="" type="text">
           </div>
         </div>
-
         <!-- Search input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="alternatePhone">Alternate Phone</label>
@@ -510,16 +485,13 @@ $(".ratng").click(function(e)
             <input id="alternatePhone" name="alternatePhone" placeholder="use the format 317-555-1212" class="form-control input-md" type="search">
           </div>
         </div>
-
         <!-- Search input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="email">Email</label>
           <div class="col-md-4">
             <input id="email" name="email" placeholder="email" class="form-control input-md" required="" type="search">
-
           </div>
         </div>
-
         <!-- Multiple Radios (inline) -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="radios">Subscribe to Mailing List</label>
@@ -535,7 +507,6 @@ $(".ratng").click(function(e)
             </label>
           </div>
         </div>
-
         <!-- Textarea -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="additionalNotes">Additional Notest and Questions</label>
@@ -543,7 +514,6 @@ $(".ratng").click(function(e)
             <textarea class="form-control" id="additionalNotes" name="additionalNotes"></textarea>
           </div>
         </div>
-
         <!-- Multiple Radios (inline) -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="howto">Recieve your immunization copy through</label>
@@ -558,7 +528,6 @@ $(".ratng").click(function(e)
             </label>
           </div>
         </div>
-
       </fieldset>
       <div class="form-group">
         <label class="col-md-4 control-label" for="Submit"></label>
@@ -567,7 +536,6 @@ $(".ratng").click(function(e)
         </div>
       </div>
     </form>
-
   </div>
 </div>
 <div class="tabcontents">
@@ -579,10 +547,8 @@ $(".ratng").click(function(e)
           <label class="col-md-4 control-label" for="textinput">Patient Name</label>  
           <div class="col-md-4">
             <input id="textinput" name="textinput" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
-
           </div>
         </div>
-
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="DateOfBirth">Date of Birth</label>  
@@ -590,7 +556,6 @@ $(".ratng").click(function(e)
             <input id="DateOfBirth" name="DateOfBirth" placeholder="Use the format MM/DD/YYY" class="form-control input-md" required="" type="text">
           </div>
         </div>
-
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="parentName">Parent or Guardian's Name</label>  
@@ -598,7 +563,6 @@ $(".ratng").click(function(e)
             <input id="parentName" name="parentName" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
           </div>
         </div>
-
         <!-- Select Basic -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="physician">Primary Care Physician</label>
@@ -607,7 +571,6 @@ $(".ratng").click(function(e)
             </select>
           </div>
         </div>
-
         <!-- Select Basic -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="preferredOffice">Preferred Office</label>
@@ -616,34 +579,27 @@ $(".ratng").click(function(e)
             </select>
           </div>
         </div>
-
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="contactNum">Primary Phone</label>  
           <div class="col-md-4">
             <input id="contactNum" name="contactNum" placeholder="use the format 317-555-1212" class="form-control input-md" required="" type="text">
-
           </div>
         </div>
-
         <!-- Search input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="alternatePhone">Alternate Phone</label>
           <div class="col-md-4">
             <input id="alternatePhone" name="alternatePhone" placeholder="use the format 317-555-1212" class="form-control input-md" type="text">
-
           </div>
         </div>
-
         <!-- Search input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="email">Email</label>
           <div class="col-md-4">
             <input id="email" name="email" placeholder="email" class="form-control input-md" required="" type="email">
-
           </div>
         </div>
-
         <!-- Multiple Radios (inline) -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="radios">Subscribe to Mailing List</label>
@@ -662,21 +618,18 @@ $(".ratng").click(function(e)
           <label class="col-md-4 control-label" for="medicationReq">Medication Requested</label>
           <div class="col-md-4">
             <input id="medReq" name="medReq" placeholder="Medication Requested" class="form-control input-md" required="" type="text">
-
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4 control-label" for="dose">Dosage</label>
           <div class="col-md-4">
             <input id="dose" name="dose" placeholder="Dose" class="form-control input-md" required="" type="text">
-
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4 control-label" for="days">Days Supply</label>
           <div class="col-md-4">
             <input id="days" name="days" placeholder="No of Days" class="form-control input-md" required="" type="text">
-
           </div>
         </div>
         <!-- Textarea -->
@@ -686,7 +639,6 @@ $(".ratng").click(function(e)
             <textarea class="form-control" id="additionalNotes" name="additionalNotes"></textarea>
           </div>
         </div>
-
         <!-- Multiple Radios (inline) -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="howto">Prescription Delivery Options</label>
@@ -701,7 +653,6 @@ $(".ratng").click(function(e)
             </label>
           </div>
         </div>
-
       </fieldset>
     </fieldset>
     <div class="form-group">
@@ -711,7 +662,6 @@ $(".ratng").click(function(e)
       </div>
     </div>
   </form>
-
 </div>
 </div>
 <div class="tabcontents">
