@@ -434,8 +434,8 @@ input.rounded2:focus{outline:0;}
 ----------------------------------*/
 .registration input{width: 100%;border-radius: 6px;padding: 8px;font-size: 12px;}
 .reg h2{font-weight: 500;}
-.drop-select{border-radius: 7px; width:100%;margin:0 auto;font-size:1.2em;background:url(../../images/images/drop.png) 98% 56% no-repeat #fbf9f9;background-color: white;font-size: 15px;}
-.drop-select select{margin-top: 6px; border-radius: 4px; width: 100%; padding:6px 15px;cursor:pointer;width:100%;color:#a9a9a9;border:1px solid #c3c3c3;box-shadow:none;background-color:transparent;background-image:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;text-overflow:'';font-size: 16px;}
+.drop-select{border-radius: 7px; width:100%;margin:0 auto;font-size:1.2em;background:url(../../images/images/drop.png) 98% 56% no-repeat #fbf9f9;background-color: white;font-size: 15px;margin-bottom: 10px;}
+.drop-select select{ border-radius: 4px; width: 100%; padding:6px 15px;cursor:pointer;width:100%;color:#a9a9a9;border:1px solid #c3c3c3;box-shadow:none;background-color:transparent;background-image:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;text-overflow:'';font-size: 16px;}
 .drop-select select:focus{outline:0;border-radius: 7px;}
 .drop-select option{font-size:14px;border:none;}
 .checkin h4{margin-left: 13px;width: 94%;}

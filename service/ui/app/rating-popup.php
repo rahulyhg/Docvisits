@@ -71,9 +71,9 @@ $rtng=$scad->userting($_REQUEST['sum'],$_SESSION['userID']);
             <div style="width: 100%;margin:5px auto;"> 
               <input style="border:none" type="button" value="submit" class="lg_btn submit" <?php if($rtng>0){echo "disabled ";} ?> id="submit">
             </div>
-            <div style="width: 100%;margin:5px auto;"> 
+            <!--<div style="width: 100%;margin:5px auto;"> 
               <input style="border:none"  type="button" value="Cancel" class="lg_btn cancel" id="cancelRtg">
-            </div>
+            </div>-->
           </div>
         </form>
       </div>

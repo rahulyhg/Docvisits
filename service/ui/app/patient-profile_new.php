@@ -2,6 +2,7 @@
 include("service/ui/common/header_pat_home.php"); 
 $result = $scad->getUserDetails($_SESSION['userID']); 
 $resu = $scad->getDetails($_SESSION['userID']);
+
 foreach ($resu as $key => $value) {
   $ids[]=$value['doctor_id'];
   $res[]= $scad->getDocDetails($value['doctor_id']);
@@ -68,7 +69,7 @@ foreach ($resu as $key => $value) {
     }
   });
    function test(){
-     alert("in test");    
+     
      $(".submit").click(function(){ 
   //alert ("okkk");
 //var n=$("#userIdf").val();
@@ -141,7 +142,7 @@ $(".ratng").click(function(e)
     <div class="row study">
      <ul class="tabs" id="docTab" style="list-style:none; padding:0; margin:0;">
        <li class="active" ><a  href="#doc-visited">My Doctors</a></li>
-       <li><a href="#past-appointments">Past Appointments</a></li>
+       <li><a href="#past-appointments">My Appointments</a></li>
        <li><a href="#ImmunizationReq">Immunization Req</a></li>
        <li><a href="#PrescriptionReq">Prescription Refill</a></li>
        <li><a href="#PrintForm">Print Forms</a></li>
@@ -194,7 +195,9 @@ $(".ratng").click(function(e)
                </div>
                <div class="col-md-8">
                 <div class="name">
-                 <h3><?php echo $value['firstname']." ".$value['lastname'];?></h3>
+                 <a href="<?php echo WEB_ROOT;?>index.php/view-prrofile/<?php echo $val['doctor_id'];?>">
+                 	<h3><?php echo $value['firstname']." ".$value['lastname'];?></h3>
+                 </a>
                </div>
 				<div class="dc_spec">
 					<p><?php 
@@ -211,7 +214,7 @@ $(".ratng").click(function(e)
 				</div>
                <input type="hidden" value="<?php echo $val['doctor_id'];?>" id="userIdf">
                <input type="hidden" value="<?php echo $_SESSION['userID'];?>" id="userid">
-               <span class="rating rate">
+               <span class="rating rate ratng" datasrc="5" target="<?php echo $val['doctor_id'] ;?>">
                 <input type="radio" <?php if($doc_rating==5){echo "checked ";}  ?> name="rating-input-<?php echo $i; ?>-5" id="rating-input-<?php echo $i; ?>-5" class="rating-input">
                 <label class="rating-star" for="rating-input-<?php echo $i; ?>-5"></label>
                 <input type="radio" <?php if($doc_rating==4){echo "checked ";}  ?> name="rating-input-<?php echo $i; ?>-4" id="rating-input-<?php echo $i; ?>-4" class="rating-input">
@@ -233,7 +236,7 @@ $(".ratng").click(function(e)
                 $c=count($count);
                 if($c==0){
                   ?>
-                  <a href="#" class="ratng" id="docid" datasrc="5" target="<?php echo $val['doctor_id'] ;?>">
+                  <a href="#" class="" id="docid" datasrc="5" target="<?php echo $val['doctor_id'] ;?>">
                     <i class="fa fa-star-o"></i>
                     <span> Rate</span>
                   </a>
@@ -255,6 +258,10 @@ $(".ratng").click(function(e)
                   </a>
                 </div>
                 <div class="prodt">
+                <!--<a href="javascript:void(0);" data-toggle="modal" class="dr_bkonline" targets="<?php echo $val['doctor_id'] ;?>">
+                	<i class="fa fa-repeat"></i>
+                    <span>Book Again</span>
+                </a>-->
                   <a href="<?php echo WEB_ROOT;?>index.php/view-prrofile/<?php echo $val['doctor_id'];?>">
                     <i class="fa fa-repeat"></i>
                     <span>Book Again</span>
@@ -274,8 +281,17 @@ $(".ratng").click(function(e)
                 </div>-->
                 <div class="prodt">
                   <a  href="javascript:void(0);">
-                    <i class="fa"></i>
-                    <span><?php echo $value['address'];?></span>
+                    <img src="<?php echo WEB_ROOT; ?>service/public/images/spotlight-poi.png" style="width: 6%;float: left;margin-left: 10px;">
+                    <?php $distance="Invalid Distance, too far";
+                    
+					    try {
+					        $url = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins='.urlencode($_SESSION['userAddress']).'&destinations='.urlencode($value["mapAddress"]).'&key=AIzaSyDtCtNnx_y65T5gdUE2lkZ-fN8v2F86lfY';
+					        $obj = json_decode(file_get_contents($url), true);
+					        if($obj['status'] == 'OK'){
+					            $distance=$obj['rows'][0]['elements'][0]['distance']['text'];
+					        } 
+					    } catch(Exception $e) { }?>
+                    <span style="padding-left:9px;"><?php echo $distance.", ".$value['address'];?></span>
                   </a>
                 </div>
                 <div class="row"></div>
@@ -309,16 +325,21 @@ $(".ratng").click(function(e)
               </div>
             </div>
             <div class="profile full phy">
-              <form style="margin-top:10px;">
+              <form id="findDoctor-form" class="tg-searchform directory-map" style="margin-top:10px;">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="drop-select">
-                    <select class="select2">
+                    <input type="text" id="doc-zip" name="docZip" placeholder="ZipCode" value="" class="form-control">
+                 </div>
+               </div>
+               <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="drop-select">
+                    <select class="select2 spciality_search" name="docSpeciality" id="docSpeciality">
                      <option val="">Select a Speciality</option>
                      <?php $scad->listbox('speciality','id','name',$condition=NULL,'`name` ASC',$selected=NULL); ?>
                    </select>
                  </div>
                </div>
-               <div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-0 col-xs-12 lg_btn" style="margin-top:10px;"><a style="color:#fff;" class="" href="<?php echo WEB_ROOT;?>index.php/search">Search</a></div>
+               <div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-0 col-xs-12 lg_btn1" style="margin-top:10px;"><input id="findDoctorBtn" class="tg-btn" value="search" type="button"></div>
              </form>
            </div>
          </div>
@@ -396,8 +417,8 @@ $(".ratng").click(function(e)
           <tr>
             <th colspan="">Doctor</th>
             <th colspan="">Reason For Visit</th>
-            <th colspan="">Date Visited</th>
-            <th colspan="">Time Visited</th>
+            <th colspan="">Appointment Date/Time</th>
+            <th colspan="">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -415,8 +436,16 @@ $(".ratng").click(function(e)
               <tr>          
                 <td data-label="Doc Name" ><?php echo $value['firstname']." ".$value['lastname'];?></td>            
                 <td data-label="Illness"class="name"><?php  if(empty($val['illness'])){echo "No response";}else{echo $val['illness'];}?></td>
-                <td data-label="Appoinment Date"><?php echo $newDate = date("d-m-Y", strtotime($val['apnt_date'])); ?></td>
-                <td data-label="Appoinment Time"><?php echo $newDate = date("H:i:s a", strtotime($val['apnt_starttime'])); ?></td>
+                <td data-label="Appoinment Date"><?php $newDate = date("m-d-Y", strtotime($val['apnt_date'])); $newTime = date("H:i a", strtotime($val['apnt_starttime'])); echo $newDate." / ".$newTime;?></td>
+               <td data-label="status"><?php $status = $val['status'];
+               	if($status == 0){
+					echo "Pending";
+				}if($status == 1){
+					echo "Approved";
+				}if($status == 2){
+					echo "Cancelled";
+				}
+                ?></td>
                 <?php           
               }
               $i++;
@@ -663,6 +692,21 @@ $(".ratng").click(function(e)
     </div>
   </form>
 </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="book_pop">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+       <div class="ball" data-dismiss="modal" aria-label="Close">
+        <a href="javascript:void(0);"> <img src="<?php echo WEB_ROOT;?>service/public/images/images/ballinto.png"></a>
+      </div>
+      <div class="bkng_online_popupmain " style="background-color:#FFF; border-radius:6px;">
+       <div class="popup_load" style="display:none;z-index:999;"></div>
+       <div class="con"></div>
+     </div>
+   </div>
+ </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
 </div>
 <div class="tabcontents">
   <div class="tab-pane" id="PrintForm">
