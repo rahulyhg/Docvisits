@@ -9,7 +9,9 @@ foreach ($resu as $key => $value) {
 }  //  print_r($res);exit;
 ?>
 <link rel="stylesheet" href="<?php echo WEB_ROOT?>service/public/css/setting_pg.css">
+<script type="application/javascript" src="<?php echo WEB_ROOT?>service/public/js/search.js"></script>
 <script type='text/javascript' src='<?php echo WEB_ROOT?>service/public/js/doctor-profile-settings.js'></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
   $(document).ready(function(){
     //alert("in patient page");
@@ -77,10 +79,15 @@ var i = $(this).parent().find("#userIdf").val();
 //alert(i); 
 var ovrall=$("input[name='rating']:checked").val();
       // alert(ovrall);
-      var bsidemnr=$("input[name='rating2']:checked").val();
+      var condition=$("input[name='rating2']:checked").val();
+      var ansque=$("input[name='rating4']:checked").val();
+      var spend=$("input[name='rating5']:checked").val();
+      var office=$("input[name='rating6']:checked").val();
+      var staff=$("input[name='rating7']:checked").val();
       // alert(bsidemnr);
       var waiting=$("input[name='rating3']:checked").val();
       // alert(waiting);
+      var update = $("#update").val();
       var msg =$("#message").val();
       var userget=$("#userid").val();
       //alert(userget);
@@ -89,7 +96,7 @@ var ovrall=$("input[name='rating']:checked").val();
       $.ajax({
         type: 'POST', 
         url: SITEURL+'patient/profile/ratingaction',
-        data: {"ovrall":ovrall , "bsidemnr":bsidemnr , "waiting":waiting , "msg":msg , "userget":userget , "docId":docId },
+        data: {"ovrall":ovrall , "condition":condition , "waiting":waiting , "msg":msg , "userget":userget , "docId":docId, "ansque":ansque,"spend":spend,"office":office,"staff":staff,"update":update  },
         success: function(res)
         {
           $("#rateModl").modal('hide');
@@ -132,6 +139,27 @@ $(".ratng").click(function(e)
 });
 //submitclickaction();
 //alert ("ok"); 
+});
+$(".num_appo").click(function(e){
+
+      //e.preventDefault();
+      var x=$(this).position();
+      e.preventDefault();
+ 	 var sum= $(this).attr("target");
+      //alert("Top position: " + x.top + " Left position: " + x.left);
+      $(".apo_con").html('');
+      $(".popup_load.apo").show();
+      
+      $.ajax({
+        type: 'POST',
+	    url: SITEURL+'patient/profile/appoinmentpopup',
+	    data: {"sum":sum},
+      }).done(function(res) {
+      $(".apo_con").html(res);
+        });
+        $(".popup_load.apo").hide();
+      $("#appoinment_pop").modal("show");
+      // $("#apntPop").show();
 });
 });
   
@@ -252,17 +280,17 @@ $(".ratng").click(function(e)
                   <?php } ?>
                 </div>
                 <div class="prodt">
-                  <a href="javascript:void(0);">
+                  <a href="javascript:void(0);" class="num_appo" target="<?php echo $val['doctor_id'] ;?>">
                     <i class="fa fa-info-circle"></i>
                     <span><?php echo $totl; ?> Appointments</span>
                   </a>
                 </div>
                 <div class="prodt">
-                <!--<a href="javascript:void(0);" data-toggle="modal" class="dr_bkonline" targets="<?php echo $val['doctor_id'] ;?>">
+               <!-- <a href="javascript:void(0);" data-toggle="modal" class="dr_bkonline" targets="<?php echo $val['doctor_id'] ;?>">
                 	<i class="fa fa-repeat"></i>
                     <span>Book Again</span>
                 </a>-->
-                  <a href="<?php echo WEB_ROOT;?>index.php/view-prrofile/<?php echo $val['doctor_id'];?>">
+                  <a href="javascript:void(0);" data-toggle="modal" class="dr_bkonline" targets="<?php echo $val['doctor_id'] ;?>">
                     <i class="fa fa-repeat"></i>
                     <span>Book Again</span>
                   </a>
@@ -291,7 +319,7 @@ $(".ratng").click(function(e)
 					            $distance=$obj['rows'][0]['elements'][0]['distance']['text'];
 					        } 
 					    } catch(Exception $e) { }?>
-                    <span style="padding-left:9px;"><?php echo $distance.", ".$value['address'];?></span>
+                    <span style="padding-left:9px;"><?php echo $distance."<br/>".$value['address'];?></span>
                   </a>
                 </div>
                 <div class="row"></div>
@@ -703,6 +731,21 @@ $(".ratng").click(function(e)
       <div class="bkng_online_popupmain " style="background-color:#FFF; border-radius:6px;">
        <div class="popup_load" style="display:none;z-index:999;"></div>
        <div class="con"></div>
+     </div>
+   </div>
+ </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="appoinment_pop">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+       <div class="ball" data-dismiss="modal" aria-label="Close">
+        <a href="javascript:void(0);"> <img src="<?php echo WEB_ROOT;?>service/public/images/images/ballinto.png"></a>
+      </div>
+      <div class="appoinment_pop_main" style="background-color:#FFF; border-radius:6px;">
+       <div class="popup_load apo" style="display:none;z-index:999;"></div>
+       <div class="apo_con"></div>
      </div>
    </div>
  </div><!-- /.modal-content -->

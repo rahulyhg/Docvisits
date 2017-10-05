@@ -673,6 +673,12 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
 		$postData =  $request->post(); 
 		$app->render('rating-popup.php',$postData); 
 	});
+	$app->post('/patient/profile/appoinmentpopup', function () use ($app) {	
+		authenticate_package($app);
+		$request	= \Slim\Slim::getInstance()->request();
+		$postData =  $request->post(); 
+		$app->render('appoinment-popup.php',$postData); 
+	});
 	$app->post('/rating_pagination', function () use ($app) {	
 		authenticate_package($app);
 		$request	= \Slim\Slim::getInstance()->request();
