@@ -9,7 +9,14 @@ foreach ($resu as $key => $value) {
 }  //  print_r($res);exit;
 ?>
 <link rel="stylesheet" href="<?php echo WEB_ROOT?>service/public/css/setting_pg.css">
+<script type="application/javascript" src="<?php echo WEB_ROOT?>service/public/js/search.js"></script>
 <script type='text/javascript' src='<?php echo WEB_ROOT?>service/public/js/doctor-profile-settings.js'></script>
+<script type="text/javascript" src="<?php echo WEB_ROOT?>service/public/js/light/html5lightbox.js"></script>
+<script type="text/javascript" src="<?php echo WEB_ROOT?>service/public/js/jquery.base64.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT?>service/public/css/light/thumbelina.css" />
+<script type="text/javascript" src="<?php echo WEB_ROOT?>service/public/js/light/thumbelina.js"></script>
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
   $(document).ready(function(){
     //alert("in patient page");
@@ -37,7 +44,65 @@ foreach ($resu as $key => $value) {
   	margin: 0;
   	padding: 0;
   }
-	
+.modal-dialog {
+    width: 80% !important;
+}
+</style>
+<style type="text/css">
+             /* Some styles for the containers */
+             #slider1 {
+               position:relative;  /* Containers need relative or absolute position. */
+               margin-left:10px;
+               width:160px;
+               height:56px;
+   /*border-top:1px solid #aaa;
+   border-bottom:1px solid #aaa;*/
+ }
+ #html5-watermark {
+   visibility: hidden;
+ }
+ .dr_viw_clm2_rew .paginatin ul li.inactiv,
+ .dr_viw_clm2_rew .paginatin ul li.inactiv:hover{
+  background-color:#ededed;
+  color:#bababa;
+  border:1px solid #bababa;
+  cursor: default;
+}
+.dr_viw_clm2_rew .data ul li{
+  list-style: none;
+  font-family: Raleway;
+  margin: 5px 0 5px 0;
+  color: #000;
+  font-size: 13px;
+}
+.dr_viw_clm2_rew .paginatin{
+  height: 25px;
+}
+.dr_viw_clm2_rew .paginatin ul li{
+  list-style: none;
+  float: left;
+  border: 1px solid #0099cc;
+  padding: 2px 6px 2px 6px;
+  margin: 0 3px 0 3px;
+  font-family: Raleway;
+  font-size: 14px;
+  color: #006699;
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+.dr_viw_clm2_rew .paginatin ul li:hover{
+  color: #fff;
+  background-color: #006699;
+  cursor: pointer;
+}
+.go_button
+{
+  background-color:#f2f2f2;border:1px solid #006699;color:#cc0000;padding:2px 6px 2px 6px;cursor:pointer;position:absolute;margin-top:-1px;
+}
+.total
+{
+  float:right;font-family:Raleway;color:#999;
+}
 </style>
 <!-- Past visited doctors script -->
 <style>
@@ -77,10 +142,15 @@ var i = $(this).parent().find("#userIdf").val();
 //alert(i); 
 var ovrall=$("input[name='rating']:checked").val();
       // alert(ovrall);
-      var bsidemnr=$("input[name='rating2']:checked").val();
+      var condition=$("input[name='rating2']:checked").val();
+      var ansque=$("input[name='rating4']:checked").val();
+      var spend=$("input[name='rating5']:checked").val();
+      var office=$("input[name='rating6']:checked").val();
+      var staff=$("input[name='rating7']:checked").val();
       // alert(bsidemnr);
       var waiting=$("input[name='rating3']:checked").val();
       // alert(waiting);
+      var update = $("#update").val();
       var msg =$("#message").val();
       var userget=$("#userid").val();
       //alert(userget);
@@ -89,10 +159,13 @@ var ovrall=$("input[name='rating']:checked").val();
       $.ajax({
         type: 'POST', 
         url: SITEURL+'patient/profile/ratingaction',
-        data: {"ovrall":ovrall , "bsidemnr":bsidemnr , "waiting":waiting , "msg":msg , "userget":userget , "docId":docId },
+        data: {"ovrall":ovrall , "condition":condition , "waiting":waiting , "msg":msg , "userget":userget , "docId":docId, "ansque":ansque,"spend":spend,"office":office,"staff":staff,"update":update  },
         success: function(res)
         {
+        	loadreview(docId);
           $("#rateModl").modal('hide');
+          
+          
         }
       });
 //*ajax end   
@@ -119,6 +192,7 @@ $(".ratng").click(function(e)
       $("#rateModl").html(res);$('#rateModl').modal('show');        
       $('.submit').show();
       test();
+      loadData(1,sum);
            /*if (res === 0) {
                         $("#error").fadeIn(1000);
                         document.getElementById('ratings').style.pointerEvents = 'auto';
@@ -133,8 +207,83 @@ $(".ratng").click(function(e)
 //submitclickaction();
 //alert ("ok"); 
 });
+$(".num_appo").click(function(e){
+
+      //e.preventDefault();
+      var x=$(this).position();
+      e.preventDefault();
+ 	 var sum= $(this).attr("target");
+      //alert("Top position: " + x.top + " Left position: " + x.left);
+      $(".apo_con").html('');
+      $(".popup_load.apo").show();
+      
+      $.ajax({
+        type: 'POST',
+	    url: SITEURL+'patient/profile/appoinmentpopup',
+	    data: {"sum":sum},
+      }).done(function(res) {
+      $(".apo_con").html(res);
+        });
+        $(".popup_load.apo").hide();
+      $("#appoinment_pop").modal("show");
+      // $("#apntPop").show();
 });
-  
+});
+    function loading_show(){
+    $('#loading').html("<img src='images/loading.gif'/>").fadeIn('fast');
+  }
+  function loading_hide(){
+    $('#loading').fadeOut('fast');
+  }
+  function loadreview(doctid){
+                        
+    $.ajax
+    ({
+      type: "POST",
+      url: SITEURL+'doctorAverageReview',
+      data: {"id" :doctid},
+      success: function(msg)
+      {
+                            //console.log(msg);
+                            
+                            $("#review_"+doctid).html('');
+                            $("#review_"+doctid).html(msg);
+                          }
+                        });
+  }function loadData(page,doct){
+    loading_show();                    
+    $.ajax
+    ({
+      type: "POST",
+      url: SITEURL+'rating_pagination',
+      data: {"page":page,"id" :doct},
+      success: function(msg)
+      {
+                            //console.log(msg);
+                            loading_hide();
+                            $(".dr_viw_clm2_rew").html(msg);
+                          }
+                        });
+  }
+                  // For first time page load default results
+                $('.dr_viw_clm2_rew .paginatin li.activ').live('click',function(){
+                	var doc = $("#dctid").val();
+                  var page = $(this).attr('p');
+                  loadData(page,doc);
+                });           
+                $('#go_btn').live('click',function(){
+                	var doc = $("#dctid").val();
+                  var page = parseInt($('.goto').val());
+                  var no_of_pages = parseInt($('.total').attr('a'));
+                  if(page != 0 && page <= no_of_pages){
+                    loadData(page,doc);
+                  }else{
+                    alert('Enter a PAGE between 1 and '+no_of_pages);
+                    $('.goto').val("").focus();
+                    return false;
+                  }
+                });
+              
 </script>
 <main id="main" class="tg-haslayout">
   <section class="tg-main-section tg-haslayout">
@@ -162,9 +311,10 @@ $(".ratng").click(function(e)
               $rat=$scad->getrting($val['doctor_id']);
               $len=count($rat);
               for($j=0;$j<$len;$j++){
-                $overall[$val['doctor_id']][]=($rat[$j]['overall'] +$rat[$j]['beside'] +$rat[$j]['waiting'])/3  ;
+                $overall[$val['doctor_id']][]=($rat[$j]['overall'] +$rat[$j]['beside']+$rat[$j]['ansque']+$rat[$j]['spend']+$rat[$j]['office']+$rat[$j]['staff'] +$rat[$j]['waiting'])/7  ;
+                
               }
-            //print_r($overall);
+            
               $rateval=0; 
               for($k=0;$k<count($overall[$val['doctor_id']]);$k++){
                 $rate = $overall[$val['doctor_id']][$k];
@@ -214,7 +364,7 @@ $(".ratng").click(function(e)
 				</div>
                <input type="hidden" value="<?php echo $val['doctor_id'];?>" id="userIdf">
                <input type="hidden" value="<?php echo $_SESSION['userID'];?>" id="userid">
-               <span class="rating rate ratng" datasrc="5" target="<?php echo $val['doctor_id'] ;?>">
+               <span class="rating rate ratng" datasrc="5" target="<?php echo $val['doctor_id'] ;?>" id="review_<?php echo $val['doctor_id'];?>">
                 <input type="radio" <?php if($doc_rating==5){echo "checked ";}  ?> name="rating-input-<?php echo $i; ?>-5" id="rating-input-<?php echo $i; ?>-5" class="rating-input">
                 <label class="rating-star" for="rating-input-<?php echo $i; ?>-5"></label>
                 <input type="radio" <?php if($doc_rating==4){echo "checked ";}  ?> name="rating-input-<?php echo $i; ?>-4" id="rating-input-<?php echo $i; ?>-4" class="rating-input">
@@ -227,10 +377,10 @@ $(".ratng").click(function(e)
                 <label class="rating-star" for="rating-input-<?php echo $i; ?>-1"></label>
               </span>
               <?php
-              $co=$scad->AppoinmentCount($val['doctor_id']);
+              $co=$scad->AppoinmentCountNew($_SESSION['userID'],$val['doctor_id']);
               $totl= $co[0]["count(doctor_id)"];  
               ?>
-              <div class="prodt">
+              <!--<div class="prodt">
                 <?php
                 $count=$scad->getratingDetails($val['doctor_id']);
                 $c=count($count);
@@ -244,25 +394,25 @@ $(".ratng").click(function(e)
                   <!--<a href="#" class="ratng" id="docid1" datasrc="5" target="<?php echo $val['doctor_id'] ;?>">
                     <i class="fa fa-star-half-o"></i>
                     <span> Rated</span>
-                  </a>-->
+                  </a>
                   <a href="javascript:void();" class=""  datasrc="5" target="<?php echo $val['doctor_id'] ;?>">
                     <i class="fa fa-star-half-o"></i>
                     <span> Rated</span>
                   </a>
                   <?php } ?>
-                </div>
+                </div>-->
                 <div class="prodt">
-                  <a href="javascript:void(0);">
+                  <a href="javascript:void(0);" class="num_appo" target="<?php echo $val['doctor_id'] ;?>">
                     <i class="fa fa-info-circle"></i>
                     <span><?php echo $totl; ?> Appointments</span>
                   </a>
                 </div>
                 <div class="prodt">
-                <!--<a href="javascript:void(0);" data-toggle="modal" class="dr_bkonline" targets="<?php echo $val['doctor_id'] ;?>">
+               <!-- <a href="javascript:void(0);" data-toggle="modal" class="dr_bkonline" targets="<?php echo $val['doctor_id'] ;?>">
                 	<i class="fa fa-repeat"></i>
                     <span>Book Again</span>
                 </a>-->
-                  <a href="<?php echo WEB_ROOT;?>index.php/view-prrofile/<?php echo $val['doctor_id'];?>">
+                  <a href="javascript:void(0);" data-toggle="modal" class="dr_bkonline" targets="<?php echo $val['doctor_id'] ;?>">
                     <i class="fa fa-repeat"></i>
                     <span>Book Again</span>
                   </a>
@@ -291,7 +441,7 @@ $(".ratng").click(function(e)
 					            $distance=$obj['rows'][0]['elements'][0]['distance']['text'];
 					        } 
 					    } catch(Exception $e) { }?>
-                    <span style="padding-left:9px;"><?php echo $distance.", ".$value['address'];?></span>
+                    <span style="padding-left:9px;"><?php echo $distance."<br/>".$value['address'];?></span>
                   </a>
                 </div>
                 <div class="row"></div>
@@ -436,14 +586,12 @@ $(".ratng").click(function(e)
               <tr>          
                 <td data-label="Doc Name" ><?php echo $value['firstname']." ".$value['lastname'];?></td>            
                 <td data-label="Illness"class="name"><?php  if(empty($val['illness'])){echo "No response";}else{echo $val['illness'];}?></td>
-                <td data-label="Appoinment Date"><?php $newDate = date("m-d-Y", strtotime($val['apnt_date'])); $newTime = date("H:i a", strtotime($val['apnt_starttime'])); echo $newDate." / ".$newTime;?></td>
+                <td data-label="Appoinment Date"><?php $newDate = date("M-d-Y", strtotime($val['apnt_date'])); $newTime = date("H:i a", strtotime($val['apnt_starttime'])); $fianDate = $newDate." ".$newTime;echo $newDate." / ".$newTime;?></td>
                <td data-label="status"><?php $status = $val['status'];
-               	if($status == 0){
-					echo "Pending";
-				}if($status == 1){
-					echo "Approved";
-				}if($status == 2){
-					echo "Cancelled";
+               	if(strtotime(date("M-d-y H:i a")) > strtotime($fianDate)){
+					echo '<a href="#" >check-in-online</a>';
+				}if(strtotime(date("M-d-y H:i a")) < strtotime($fianDate)){
+					echo "Completed";
 				}
                 ?></td>
                 <?php           
@@ -703,6 +851,21 @@ $(".ratng").click(function(e)
       <div class="bkng_online_popupmain " style="background-color:#FFF; border-radius:6px;">
        <div class="popup_load" style="display:none;z-index:999;"></div>
        <div class="con"></div>
+     </div>
+   </div>
+ </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="appoinment_pop">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+       <div class="ball" data-dismiss="modal" aria-label="Close">
+        <a href="javascript:void(0);"> <img src="<?php echo WEB_ROOT;?>service/public/images/images/ballinto.png"></a>
+      </div>
+      <div class="appoinment_pop_main" style="background-color:#FFF; border-radius:6px;">
+       <div class="popup_load apo" style="display:none;z-index:999;"></div>
+       <div class="apo_con"></div>
      </div>
    </div>
  </div><!-- /.modal-content -->

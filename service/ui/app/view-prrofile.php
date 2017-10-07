@@ -1,36 +1,22 @@
 <?php 
 include("service/ui/common/header.php");
-
 include("./conf/config.inc.php");
 //$patientData = $_POST;
-
-
-
-
-
-
  //print_r($resu);
-
 $result = $scad->getUserDetails($doctorID);
 $resImage = $scad->getImages($doctorID);
   //print_r($result);
 $rating = $scad->getrting($doctorID);
-
-
   //echo "<pre>";
-
 foreach($rating as $key=>$value){
       //echo "<pre>";
       //print_r($value);ma
     //echo $value[userid];
   $userresult = $scad->getUserDetails($value[userid]);
   $finalresult[]=$userresult;
-
-
 } 
   //echo "<pre>";
   //  print_r($finalresult);
-
 //$val = $scad->getLnt($result['zipcode']);
 //echo $val;
 ?>
@@ -47,7 +33,6 @@ foreach($rating as $key=>$value){
      resonforvisitData(1);
      $("#new").hide();
      $("#old2").hide();
-
      var nextDate = '';
      
      var allDoctors = $(".allDoctors").val();
@@ -101,7 +86,6 @@ foreach($rating as $key=>$value){
       }
     });
                     }
-
                     $("#old1").click(function(){
                       $("#new").fadeIn(1000);          
                       $("#old1").hide();
@@ -117,14 +101,12 @@ foreach($rating as $key=>$value){
            $bwdBut:$('#slider1 .leftt'),    // Selector to left button.
            $fwdBut:$('#slider1 .rightt')    // Selector to right button.
          });
-
    function loading_show(){
     $('#loading').html("<img src='images/loading.gif'/>").fadeIn('fast');
   }
   function loading_hide(){
     $('#loading').fadeOut('fast');
   }
-
   function loadData(page){
     loading_show();                    
     $.ajax
@@ -144,7 +126,6 @@ foreach($rating as $key=>$value){
                 $('.dr_viw_clm2_rew .paginatin li.activ').live('click',function(){
                   var page = $(this).attr('p');
                   loadData(page);
-
                 });           
                 $('#go_btn').live('click',function(){
                   var page = parseInt($('.goto').val());
@@ -156,11 +137,10 @@ foreach($rating as $key=>$value){
                     $('.goto').val("").focus();
                     return false;
                   }
-
                 });
               });
             </script>     
-            <style type="text/css">
+<style type="text/css">
              /* Some styles for the containers */
              #slider1 {
                position:relative;  /* Containers need relative or absolute position. */
@@ -187,9 +167,7 @@ foreach($rating as $key=>$value){
   color: #000;
   font-size: 13px;
 }
-
 .dr_viw_clm2_rew .paginatin{
-
   height: 25px;
 }
 .dr_viw_clm2_rew .paginatin ul li{
@@ -217,11 +195,8 @@ foreach($rating as $key=>$value){
 {
   float:right;font-family:Raleway;color:#999;
 }
-
 </style>
-
 <div class="container section_wrapper">
-
   <div class="row mg-t-p">
     <div class="col-md-7 col-sm-7 col-xs-12 dg_div" style="min-height: 294px;">
       <div class="col-md-4">
@@ -405,13 +380,11 @@ foreach($rating as $key=>$value){
   </div>
 </div>
 </div>
-
 <script type="text/javascript">
   function goBack() {
     window.history.back();
   }
 </script>
-
 <script type="text/javascript">
     // Define your locations: HTML content for the info window, latitude, longitude
     var locations = [
@@ -435,7 +408,6 @@ foreach($rating as $key=>$value){
       anchor: new google.maps.Point(15,33),
       url: iconURLPrefix + 'msmarker.shadow.png'
     };
-
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 13,
       center: new google.maps.LatLng(<?php echo $val['lat'];?>, <?php echo $val['lng'];?>),
@@ -447,11 +419,9 @@ foreach($rating as $key=>$value){
        position: google.maps.ControlPosition.LEFT_BOTTOM
      }
    });
-
     var infowindow = new google.maps.InfoWindow({
       maxWidth: 160
     });
-
     var marker;
     var markers = new Array();
     
@@ -465,9 +435,7 @@ foreach($rating as $key=>$value){
         icon : icons[iconCounter],
         shadow: shadow
       });
-
       markers.push(marker);
-
       google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
         return function() {
           infowindow.setContent(locations[i][0]);
@@ -481,7 +449,6 @@ foreach($rating as $key=>$value){
         iconCounter = 0;
       }
     }
-
     function AutoCenter() {
       //  Create a new viewpoint bound
       var bounds = new google.maps.LatLngBounds();
@@ -495,4 +462,3 @@ foreach($rating as $key=>$value){
     //AutoCenter();
   </script> 
   <?php include("service/ui/common/footer.php"); ?>
-
