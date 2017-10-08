@@ -2,11 +2,11 @@
 include("service/ui/common/header_pat_home.php"); 
 $result = $scad->getUserDetails($_SESSION['userID']); 
 $resu = $scad->getDetails($_SESSION['userID']);
-
+//echo "<pre>";print_r($resu);exit;
 foreach ($resu as $key => $value) {
   $ids[]=$value['doctor_id'];
   $res[]= $scad->getDocDetails($value['doctor_id']);
-}  //  print_r($res);exit;
+}    
 ?>
 <link rel="stylesheet" href="<?php echo WEB_ROOT?>service/public/css/setting_pg.css">
 <script type="application/javascript" src="<?php echo WEB_ROOT?>service/public/js/search.js"></script>
@@ -266,12 +266,29 @@ $(".num_appo").click(function(e){
                         });
   }
                   // For first time page load default results
-                $('.dr_viw_clm2_rew .paginatin li.activ').live('click',function(){
+                  $(document).on('click', '.dr_viw_clm2_rew .paginatin li.activ', function(e) {
+                  	  var doc = $("#dctid").val();
+	                  var page = $(this).attr('p');
+	                  loadData(page,doc);
+                  });
+                  $(document).on('click', '#go_btn', function(e) {
+                  	 var doc = $("#dctid").val();
+	                  var page = parseInt($('.goto').val());
+	                  var no_of_pages = parseInt($('.total').attr('a'));
+	                  if(page != 0 && page <= no_of_pages){
+	                    loadData(page,doc);
+	                  }else{
+	                    alert('Enter a PAGE between 1 and '+no_of_pages);
+	                    $('.goto').val("").focus();
+	                    return false;
+	                  }
+                  });
+                /*$('.dr_viw_clm2_rew .paginatin li.activ').live('click',function(){
                 	var doc = $("#dctid").val();
                   var page = $(this).attr('p');
                   loadData(page,doc);
-                });           
-                $('#go_btn').live('click',function(){
+                }); */          
+                /*$('#go_btn').live('click',function(){
                 	var doc = $("#dctid").val();
                   var page = parseInt($('.goto').val());
                   var no_of_pages = parseInt($('.total').attr('a'));
@@ -282,7 +299,7 @@ $(".num_appo").click(function(e){
                     $('.goto').val("").focus();
                     return false;
                   }
-                });
+                });*/
               
 </script>
 <main id="main" class="tg-haslayout">
@@ -377,7 +394,7 @@ $(".num_appo").click(function(e){
                 <label class="rating-star" for="rating-input-<?php echo $i; ?>-1"></label>
               </span>
               <?php
-              $co=$scad->AppoinmentCountNew($_SESSION['userID'],$val['doctor_id']);
+              $co = $scad->AppoinmentCountNew($_SESSION['userID'],$val['doctor_id']);
               $totl= $co[0]["count(doctor_id)"];  
               ?>
               <!--<div class="prodt">
@@ -573,8 +590,8 @@ $(".num_appo").click(function(e){
         </thead>
         <tbody>
           <?php
-          $i=0;  
-          foreach ($resu as $key => $val) {
+         $app = $scad->getPatientAppointmentDetails($_SESSION['userID']);
+          foreach ($app as $key => $val) {
               //echo $val['illness'];
             //print_r($val);
             $res= $scad->getDocDetails($val['doctor_id']);
@@ -585,12 +602,12 @@ $(".num_appo").click(function(e){
               ?>  
               <tr>          
                 <td data-label="Doc Name" ><?php echo $value['firstname']." ".$value['lastname'];?></td>            
-                <td data-label="Illness"class="name"><?php  if(empty($val['illness'])){echo "No response";}else{echo $val['illness'];}?></td>
+                <td data-label="Illness"class="name"><?php echo $val['apnt_note']; ?></td>
                 <td data-label="Appoinment Date"><?php $newDate = date("M-d-Y", strtotime($val['apnt_date'])); $newTime = date("H:i a", strtotime($val['apnt_starttime'])); $fianDate = $newDate." ".$newTime;echo $newDate." / ".$newTime;?></td>
                <td data-label="status"><?php $status = $val['status'];
-               	if(strtotime(date("M-d-y H:i a")) > strtotime($fianDate)){
-					echo '<a href="#" >check-in-online</a>';
-				}if(strtotime(date("M-d-y H:i a")) < strtotime($fianDate)){
+               	if(strtotime("now") < strtotime($fianDate)){
+					echo '<a href="'.WEB_ROOT.'/index.php/patient/check-in-online-form" >check-in-online</a>';
+				}if(strtotime("now") > strtotime($fianDate)){
 					echo "Completed";
 				}
                 ?></td>

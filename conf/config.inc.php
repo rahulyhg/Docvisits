@@ -11,9 +11,9 @@ define("APP_PATH", "./");
 
 
 
-define("BASE_URL","http://localhost:8080/development/service/ui/app/");
-define("WEB_ROOT","http://localhost:8080/development/");
-define("SLIM_ROOT","http://localhost:8080/development/");
+define("BASE_URL","http://realrajmahalmasala.com/DocVisits/development/service/ui/app/");
+define("WEB_ROOT","http://realrajmahalmasala.com/DocVisits/development/");
+define("SLIM_ROOT","http://realrajmahalmasala.com/DocVisits/development/");
 
 define("DB_PREFIX", "scad_");
 
@@ -28,12 +28,12 @@ define("MAIL_PORT", "25");
 
 
 
-$dbusername = "docv";
-$dbpassword = "docv";
-$hostname = "localhost:8889";
+$dbusername = "realrxzh_doctor";
+$dbpassword = "4!*mEADedVh8";
+$hostname = "localhost";
 
 
-$db = "docv-upgraded";
+$db = "realrxzh_doctor";
 
 define("host",$hostname);
 define("dbusername",$dbusername);

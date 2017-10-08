@@ -1,2 +1,3 @@
-var SITEURL = "http://localhost:8080/DocVisits/development/index.php/";
-var SITEURL1 = "http://localhost:8080/DocVisits/development/"
+var SITEURL = "http://realrajmahalmasala.com/DocVisits/development/index.php/";
+
+var SITEURL1 = "http://realrajmahalmasala.com/DocVisits/development/"

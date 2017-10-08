@@ -1,25 +1,25 @@
-<?php
-include("./conf/config.inc.php");
-$patientData = $_POST;
-//print_r($patientData);
-if(!empty($patientData)){
-	$result = $scad->userDeatails($patientData['docEmail'],$patientData['docPassword']);
-	//print_r($result);exit;
-	if(!empty($result)){
-		if($result['status']==0){
-			echo 3;
-		}
-		else{
-
-			$_SESSION['userID'] = $result['id'];	
-			$_SESSION['userType'] = $result['usertype'];
-			$_SESSION['gender']=$result['gender'];
-			$_SESSION['name']=$result['firstname']." ".$result['lastname'];
-			echo $redirectlag =$result['dob'].",".$result['gender'].",".$result['id'].",".$result['usertype'];
-		}
-	}else{
-		echo $redirectlag = '0';
-
-	}
-}
+<?php
+include("./conf/config.inc.php");
+$patientData = $_POST;
+//print_r($patientData);
+if(!empty($patientData)){
+	$result = $scad->userDeatails($patientData['docEmail'],$patientData['docPassword']);
+	//print_r($result);exit;
+	if(!empty($result)){
+		if($result['status']==0){
+			echo 3;
+		}
+		else{
+
+			$_SESSION['userID'] = $result['id'];	
+			$_SESSION['userType'] = $result['usertype'];
+			$_SESSION['gender']=$result['gender'];
+			$_SESSION['name']=$result['firstname']." ".$result['lastname'];
+			echo $redirectlag =$result['dob'].",".$result['gender'].",".$result['id'].",".$result['usertype'];
+		}
+	}else{
+		echo $redirectlag = '0';
+
+	}
+}
 ?>

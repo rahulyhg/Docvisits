@@ -7,9 +7,7 @@ error_reporting(E_ALL);
 function get_days($startdate,$enddate){
     $begin = new DateTime(date("Y-m-d", strtotime($startdate)));
     $end = new DateTime(date("Y-m-d", strtotime($enddate)));
-
     $daterange = new DatePeriod($begin, new DateInterval('P1D'), $end);
-
     foreach($daterange as $date){
         $adays[] =$date->format("Y-m-d");
     }
@@ -17,14 +15,11 @@ function get_days($startdate,$enddate){
     return $adays;  
 }
     //calculate days between two dates
-
     //calculate days between two times
 function get_times($startdate,$enddate){
     $begin = new DateTime(date("H:i", strtotime($startdate)));
     $end = new DateTime(date("H:i", strtotime($enddate)));
-
     $daterange = new DatePeriod($begin, new DateInterval('PT900S'), $end);
-
     foreach($daterange as $date){
         $atimes[] =$date->format("H:i A");
     }
@@ -32,13 +27,11 @@ function get_times($startdate,$enddate){
     return $atimes;  
 }
     //calculate days between two times
-
     //get working plan
 function get_working_plan($wr_plan){
     return get_times($wr_plan['start'],$wr_plan['ends']);
 }
     //get working plan
-
     //get break time
 function get_break_time($br_plan){
     foreach ($br_plan as $key => $value) {
@@ -52,7 +45,6 @@ function get_break_time($br_plan){
     return $flat = call_user_func_array('array_merge', $br);
 }
     //get break time
-
     //get vacation times with date
 function get_vacation_time($va_time_plan){
     foreach ($va_time_plan as $key => $value) {
@@ -76,7 +68,6 @@ function get_vacation_date($va_time_plan){
     return $flat = array_unique(call_user_func_array('array_merge', $vd));
 }
     //get vacation days
-
     //get date slide
 function date_slide($columns,$date,$cls){
     $data = '';
@@ -91,7 +82,6 @@ function date_slide($columns,$date,$cls){
     return $data;
 }
     //get date slide
-
     //get lnt and lat
 function getLnt($zip){
     $url = "http://maps.googleapis.com/maps/api/geocode/json?address=
@@ -121,9 +111,7 @@ $lat_lng = $scad->getLnt($value["zip"]);
 $map_over_data_lat = $lat_lng['lat'];
 $map_over_data_lng = $lat_lng['lng'];
 $map_over_data_img = $s.'assets/frontend/img/01.png';
-
 return $map_over_data = [$map_over_data_html,$map_over_data_lat,$map_over_data_lng,$map_over_data_img];
-
 }
  //<p><a href="'. WEB_ROOT . "index.php/view-prrofile/" . $key . '">View Profile</a></p>            
 function profile_html($value,$s,$key,$button,$count){
@@ -135,10 +123,8 @@ function profile_html($value,$s,$key,$button,$count){
         if($obj['status'] == 'OK'){
 //print_r($obj['rows'][0]['elements'][0]);
             $distance=$obj['rows'][0]['elements'][0]['distance']['text'];
-
         } 
     } catch(Exception $e) {
-
     }
     $style = ($button==1)? 'style="display:none"' : '';
     return $profile_html = '<div class="profile Doc'.$key.'">
@@ -166,7 +152,6 @@ function profile_html($value,$s,$key,$button,$count){
         <p><a href="javascript:void(0);" data-toggle="modal" class="dr_bkonline" targets="'. $key .'">Book Online</a></p>
     </div>
 </div>
-
 <div class="row"> 
     <div class="col-md-12">
         <div class="text">
@@ -213,13 +198,9 @@ function calendar_html($value,$columns,$Day,$date,$s,$key){
                 $calendar_html .= '<li class="last active less '.$cls_hi.' sss'.$key.'" value="'.$key.'" > <div class="sch-slotex">Less </div></li>';
             }
             elseif(is_array($value['vacation_date']) && in_array($date_C, $value['vacation_date'])&&in_array($date_C, $value['vacation_date'])&&in_array($ve_value, $value['vacation_time'][$date_C])){
-
                 $calendar_html .= '<li class="disabled '.$cls_hi.' "><div class="sch-slot">vacation</div></li>';
-
             }elseif(is_array($value[$day_C]['break_time'])&&in_array($ve_value, $value[$day_C]['break_time'])){ 
-
                 $calendar_html .= '<li class="disabled '.$cls_hi.' "> <div class="sch-slot">Break </div></li>';
-
             }elseif(array_key_exists('appointmentDetails',$value) &&array_key_exists($date_C,$value['appointmentDetails']) ) {
                 $match=false;
                 foreach ($value['appointmentDetails'][$date_C] as $no => $time) {
@@ -238,19 +219,14 @@ function calendar_html($value,$columns,$Day,$date,$s,$key){
             }
         }
         $calendar_html .= '</ul></div>';
-
     }
-
 }
 return $calendar_html;
 }
-
 function search_data($data,$scad,$pagination,$totalPages,$status = null,$dateCnt=0,$columns =3){
-
             //default values
     $currDate = date('Y-m-d');
     $days=array('Mon','Tue','Wed','Thu','Fri','Sat','Sun');
-
     if($status=='next'){
         $date= ($dateCnt==0) ? date('Y-m-d') : date('Y-m-d' , strtotime($dateCnt. ' + '.$columns.' days'));
         $Day = ($dateCnt==0) ? date('D') : date('D',strtotime($dateCnt. ' + '.$columns.' days'));
@@ -277,7 +253,6 @@ function search_data($data,$scad,$pagination,$totalPages,$status = null,$dateCnt
         }
         $id1[]=$value['doctorID'];
         $userImg = WEB_ROOT . "service/public/z_uploads/doctor/small/" . $docImage;
-
         $rat=$scad->getrting($value['doctorID']);
         $len=count($rat);
         $rateval=0; 
@@ -286,14 +261,12 @@ function search_data($data,$scad,$pagination,$totalPages,$status = null,$dateCnt
             
         }
         $res_data[$value['doctorID']]['rating'] =$rateval;
-
         $res_data[$value['doctorID']]['name'] = (!empty($value['firstname']) || !empty($value['lastname'])) ? $value['firstname']."&nbsp".$value['lastname'] : 'Not specified';
         $res_data[$value['doctorID']]['address'] = (!empty($value['address']) || !empty($value['zipcode'])) ? $value['address'].'<br>'.$value['zipcode'] : 'Not Specified';
         $res_data[$value['doctorID']]['mapAddress'] = (!empty($value['address']) || !empty($value['zipcode'])) ? $value['address'].','.$value['zipcode'] : '';
         $res_data[$value['doctorID']]['zip'] =$value['zipcode'];
         $res_data[$value['doctorID']]['description'] = (! empty($value['description'])) ? $value['description'] : '--';
         $res_data[$value['doctorID']]['profile_pic'] = $userImg;
-
         if(! empty($cal_result['working_plan'])){
             $res_data[$value['doctorID']]['working_plan']=json_decode($cal_result['working_plan'],TRUE);
             $data1=1;
@@ -311,7 +284,6 @@ function search_data($data,$scad,$pagination,$totalPages,$status = null,$dateCnt
             $res_data[$value['doctorID']]['appointmentDetails'][$valus['apnt_date']][$keey]=$valus['apnt_starttime'];
         }
     }
-
 }
             // echo '<pre>';
             //   print_r($res_data);die;
@@ -335,26 +307,18 @@ $s =WEB_ROOT;
 $data_res .= '<input type="hidden" class="currentDate"  value="'.$date.'">';
 $count=0;
 foreach ($res_data as $key => $value) {
-
                 //print_r($value);exit;
                 //foreach ($days as $day_key => $day_value) {
                 // profile and popup
     $data_res .='<div class="row">';
-
     $data_res .='<div class="col-md-6">';
     $data_res .=profile_html($value,$s,$key,0,++$count);
     $data_res .='</div>';
-
     $data_res .='<div class="col-md-6"><div class="date-full">';
     $data_res .=calendar_html($value,$columns,$Day,$date,$s,$key);
     $data_res .='</div>';
-
     $data_res .='</div></div><div class="between"></div>';
-
-
-
                // $map_data[] = map_over_data($value,$scad);
-
 }
 $pagination_data ='<div class="row"><div class="col-md-offset-1 col-md-11">';
 $pagination_data .=$pagination;
@@ -371,28 +335,19 @@ $result_data['noOfPages']=$totalPages;
 echo json_encode($result_data);
             //make time slot
             //calendar data begins
-
 }
-
 function modal_data($data,$status = null,$dateCnt=0,$columns,$profile,$map){
     $key = $data['id'];
-
     $query = $data;
-
         //forming profile data
     $value['name'] = (!empty($query->first_name) || !empty($query->last_name)) ? $query->first_name."&nbsp".$query->last_name : 'Not specified';
     $value['address'] = (!empty($query->address) || !empty($query->state) || !empty($query->city) || !empty($query->zip)) ? $query->address.'<br>'.$query->state.'<br>'.$query->city.'<br>'.$query->zip : 'Not Specified';
     $value['mobile'] = (!empty($query->mobile)) ? $query->mobile : 'Not Specified';
     $value['zip'] = $query->zip;
         //forming profile data
-
             //forming calendar data
-
     $currDate = date('Y-m-d');
-
             //print_r($dateCnt);
-
-
     $days=array('Mon','Tue','Wed','Thu','Fri','Sat','Sun');
     if($status=='next'){
         $date= ($dateCnt==0) ? date('Y-m-d') : date('Y-m-d' , strtotime($dateCnt. ' + '.$columns.' days'));
@@ -402,7 +357,6 @@ function modal_data($data,$status = null,$dateCnt=0,$columns,$profile,$map){
         $Day = ($dateCnt==0) ? date('D') : date('D',strtotime($dateCnt. ' - '.$columns.' days'));
     }
     $end_date = date('Y-m-d', strtotime($currDate. ' + '.$columns.' days'));
-
     if(! empty($query->working_plan)){
         $value['working_plan']=json_decode($query->working_plan,TRUE);
         $data1=1;
@@ -415,7 +369,6 @@ function modal_data($data,$status = null,$dateCnt=0,$columns,$profile,$map){
     if(! empty($result['vecation'])){
         $value['vecation']=json_decode($query->vecation,TRUE);
     }
-
     if($value['working_plan'] != 'none'){
         foreach ($days as  $day) {
             $value[$day]['working_time'] = (array_key_exists('working_plan',$value) && $value['working_plan']!='none')  ? get_working_plan($value['working_plan'][$day]) : '';
@@ -424,10 +377,8 @@ function modal_data($data,$status = null,$dateCnt=0,$columns,$profile,$map){
             $value['vacation_time'] = (array_key_exists('vacation',$value)) ? get_vacation_time($value['vacation'],$data[$key]['vacation_date']) : '';
         }
     }
-
     
         //forming calendar data
-
     $s =base_url();
     $calendar = '<input type="hidden" class="popcurrentDate"  value="'.$date.'">'.calendar_html($value,$columns,$Day,$date,$s,$key);
     if($profile==0){
@@ -439,11 +390,8 @@ function modal_data($data,$status = null,$dateCnt=0,$columns,$profile,$map){
         $map_data[] = map_over_data($value);
         $response['map'] = $map_data;
     }
-
     echo json_encode($response);
 }
-
-
 if ($_POST['page']) {
   parse_str($search);
   //echo "in if";
@@ -462,7 +410,6 @@ if ($_POST['page']) {
   //print_r($result1);
   $end  = count($result1);
   $end1 = count($result);
-
   $no_of_paginations = ceil($end / $per_page);
   $totalPages=$end;
   
@@ -485,14 +432,12 @@ if ($_POST['page']) {
         $end_loop = $no_of_paginations;
 }
 $msg = "<div class='pagination'>";
-
     // FOR ENABLING THE FIRST BUTTON
 if ($first_btn && $cur_page > 1) {
     $msg .= "<a href='javascript:void(0);' p='1' class='page acti'>First</a>";
 } else if ($first_btn) {
     $msg .= "<a href='javascript:void(0);' p='1' class='page1'>First</a>";
 }
-
     // FOR ENABLING THE PREVIOUS BUTTON
 if ($previous_btn && $cur_page > 1) {
     $pre = $cur_page - 1;
@@ -501,13 +446,11 @@ if ($previous_btn && $cur_page > 1) {
     $msg .= "<a href='javascript:void(0);' class='page1'>Prev</a>";
 }
 for ($i = $start_loop; $i <= $end_loop; $i++) {
-
     if ($cur_page == $i)
         $msg .= "<a href='javascript:void(0);' p='$i'  class='page active acti'>{$i}</a>";
     else
         $msg .= "<a href='javascript:void(0);' p='$i' class='page1 acti'>{$i}</a>";
 }
-
     // TO ENABLE THE NEXT BUTTON
 if ($next_btn && $cur_page < $no_of_paginations) {
     $nex = $cur_page + 1;
@@ -515,14 +458,12 @@ if ($next_btn && $cur_page < $no_of_paginations) {
 } else if ($next_btn) {
     $msg .= "<a href='javascript:void(0);' class='page1'>Next</a>";
 }
-
     // TO ENABLE THE END BUTTON
 if ($last_btn && $cur_page < $no_of_paginations) {
     $msg .= "<a  href='javascript:void(0);' p='$no_of_paginations' class='page acti'>Last</a>";
 } else if ($last_btn) {
     $msg .= "<a href='javascript:void(0);' p='$no_of_paginations' class='page1'>Last</a>";
 }
-
 if($end1>0){
     search_data($result,$scad,$msg,$totalPages); 
 } else{

@@ -131,3 +131,4 @@
 [03-Sep-2017 08:17:36 UTC] PHP Fatal error:  Function name must be a string in /home/sridhar749/public_html/beta/service/ui/app/calendar-events.php on line 54
 [03-Sep-2017 08:19:40 UTC] PHP Fatal error:  Function name must be a string in /home/sridhar749/public_html/beta/service/ui/app/calendar-events.php on line 54
 [09-Sep-2017 04:56:08 UTC] PHP Fatal error:  Call to a member function mailSending() on a non-object in /home/sridhar749/public_html/beta/service/ui/app/act-confirm-apnt.php on line 140
+[08-Oct-2017 14:09:20 America/New_York] PHP Fatal error:  Class 'mysqldb' not found in /home/realrxzh/public_html/DocVisits/development/conf/config.inc.php on line 47

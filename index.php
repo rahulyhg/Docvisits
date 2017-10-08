@@ -507,6 +507,32 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
 		
 
 	});
+	$app->get('/patient/check-in-online-form', function () use ($app) {
+
+		include("conf/config.inc.php");
+
+		if($_SESSION['userType']==2){
+
+			$app->render('check-in-online.php');
+
+		}
+
+		
+
+	});
+	$app->get('/patient/check-in-online-form(/:seachData)', function ($seachData=NULL) use ($app) {
+
+		include("conf/config.inc.php");
+
+		if($_SESSION['userType']==2){
+
+			$app->render('check-in-online.php');
+
+		}
+
+		
+
+	});
 
 	$app->get('/admin/user-server-response', function () use ($app) {
 

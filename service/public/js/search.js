@@ -141,9 +141,10 @@ $(document).ready(function() {
     AutoCenter();
   }
 }
-var Data = $("#searchData").val();
+
 function loadData(page) {
   $("#searchLoading").show();
+  var Data = $("#searchData").val();
   var allDoctors = $("#allDoctors").val();
   //miniCalendar(0, allDoctors, 'first');
   $(".calender_custom").hide();
@@ -200,7 +201,6 @@ function loadData(page) {
       window.scrollTo(0, 0);
     });
 }
-
   loadData(1); // For first time page load default results
   $(document).on('click', '.pagination .acti', function() {
     var page = $(this).attr('p');
@@ -284,7 +284,6 @@ function modalPopup(){
           }, 3000);
           //$(".con").html(html);
           //console.log(outData.address,outData.latitude,outData.longitude);
-
         });
       $("#book_pop").modal("show");
       // $("#apntPop").show();
@@ -358,7 +357,6 @@ function modalPopup(){
           html += '</div>';       
           //html += '<div class="col-md-6 col-sm-6 col-xs-6"><div id="popMap" class="bkng_online_popup_map"></div></div>';
           html += '</div>';
-
           html += '<div class="col-md-12 col-sm-12 col-xs-12">'; 
           //html += '<div id="apntPop" class="bkng_popup_close"></div>';
           html += '<div class="col-md-12 col-sm-12 col-xs-12" style=" background-color: #F2F2F2;border: 1px solid #e6e6e6;">';
@@ -371,7 +369,6 @@ function modalPopup(){
           html += '</div>';       
           //html += '<div class="col-md-6 col-sm-6 col-xs-6"><div id="popMap" class="bkng_online_popup_map"></div></div>';
           html += '</div>';
-
           html += '<div class="col-md-12 col-sm-12 col-xs-12">'; 
           //html += '<div id="apntPop" class="bkng_popup_close"></div>';
           html += '<div class="col-md-12 col-sm-12 col-xs-12" style=" background-color: #F2F2F2;border: 1px solid #e6e6e6;">';
@@ -421,7 +418,6 @@ function modalPopup(){
          }, 3000);
           //$(".con").html(html);
           //console.log(outData.address,outData.latitude,outData.longitude);
-
         });
 $("#book_pop").modal("show");
       // $("#apntPop").show();
@@ -446,7 +442,6 @@ $(".dr_rating").click(function(e){
          }, 3000);
           //$(".con").html(html);
           //console.log(outData.address,outData.latitude,outData.longitude);
-
         });
       $("#book_pop").modal("show");
       // $("#apntPop").show();
@@ -455,7 +450,6 @@ $(".dr_getDirections").click(function(e){
   e.preventDefault();
   window.open($(this).attr("href"), "popupWindow", "top=100,width=800,height=600,scrollbars=yes,location=no,menubar=no,status=no,titlebar=no,toolbar=no,left=200");
 });
-
 }
 function calevents(){
   $("#next1").click(function(){
@@ -536,4 +530,3 @@ function mapMArking(address,latitude,longitude){
       window.location.href = SITEURL + 'appointment/fixing/'+data+'/'+ins+'/'+subins+'/'+srchins;
     });
   }
-
