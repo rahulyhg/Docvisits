@@ -751,6 +751,17 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
 		
 
 	});
+	$app->post('/get_doc_details', function () use ($app) {
+		include("conf/config.inc.php");
+		$request	= \Slim\Slim::getInstance()->request();
+
+		$postData =  $request->get();
+
+		$app->render('getDoctorDetails.php',$postData);
+
+		
+
+	});
 
 
 

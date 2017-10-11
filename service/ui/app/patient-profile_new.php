@@ -283,6 +283,54 @@ $(".num_appo").click(function(e){
 	                    return false;
 	                  }
                   });
+                  $(document).on('change', '#physician', function(e) {
+                  	 var doc = $('#physician :selected').val();
+	                  if(doc == "other" && doc != ""){
+	                  	$('#physicianName').val("");
+	                  	$('#physicianfaxnumber').val("");
+	                    $('#physicianName').get(0).type = 'text';
+	                  }else{
+	                  	$.ajax({
+					      type: "POST",
+					      url: SITEURL+'get_doc_details',
+					      data: {"id" :doc},
+					      success: function(msg)
+					      {	
+					      obj = jQuery.parseJSON(msg);
+                            console.log(obj.id);
+                            //loading_hide();
+                           /*$('#physicianfaxnumber').val(msg.address);
+                           $('#physicianfaxnumber').val(msg.fax);*/
+                          }
+					    });
+	                  	$('#physicianName').get(0).type = 'hidden';
+	                    $('#physicianName').val(doc);
+	                  }
+                  });
+                  $(document).on('change', '#physician1', function(e) {
+                  	 var doc = $('#physician1 :selected').val();
+	                  if(doc == "other" && doc != ""){
+	                  	$('#physicianName1').val("");
+	                  	$('#physicianfaxnumber1').val("");
+	                    $('#physicianName1').get(0).type = 'text';
+	                  }else{
+	                  	$.ajax({
+					      type: "POST",
+					      url: SITEURL+'get_doc_details',
+					      data: {"id" :doc},
+					      success: function(msg)
+					      {	
+					      obj = jQuery.parseJSON(msg);
+                            console.log(obj.id);
+                            //loading_hide();
+                           /*$('#physicianfaxnumber').val(msg.address);
+                           $('#physicianfaxnumber').val(msg.fax);*/
+                          }
+					    });
+	                  	$('#physicianName1').get(0).type = 'hidden';
+	                    $('#physicianName1').val(doc);
+	                  }
+                  });
                 /*$('.dr_viw_clm2_rew .paginatin li.activ').live('click',function(){
                 	var doc = $("#dctid").val();
                   var page = $(this).attr('p');
@@ -651,43 +699,58 @@ $(".num_appo").click(function(e){
         </div>
         <!-- Select Basic -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="physician">Primary Care Physician</label>
+          <label class="col-md-4 control-label" for="physician">Physician Name</label>
           <div class="col-md-4">
             <select id="physician" name="physician" class="form-control">
+             <option value="">Select Physician</option>
+            <?php if(!empty($resu)){
+            	
+		          foreach ($resu as $key => $val) {
+		              //echo $val['illness'];
+		            //print_r($val);
+		            $res= $scad->getDocDetails($val['doctor_id']);
+		            foreach ($res as $key => $value) {
+            	?>
+            	<option value="<?php echo $val['doctor_id'];?>"><?php echo $value['firstname']." ".$value['lastname'];?></option>
+            <?php 	}
+            	}
+            	}
+             ?>
+            <option value="other">Other</option>
             </select>
+            <input type="hidden" name="physicianName" id="physicianName" value="" />
           </div>
         </div>
         <!-- Select Basic -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="preferredOffice">Preferred Office</label>
+          <label class="col-md-4 control-label" for="physicianfaxnumber">Physician Fax Number</label>
           <div class="col-md-4">
-            <select id="preferredOffice" name="preferredOffice" class="form-control">
-            </select>
+            <input type="text" id="physicianfaxnumber" name="physicianfaxnumber" value=""/>
           </div>
         </div>
         <!-- Text input-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="contactNum">Primary Phone</label>  
+          <label class="col-md-4 control-label" for="contactNum">Patient Primary Phone</label>  
           <div class="col-md-4">
             <input id="contactNum" name="contactNum" placeholder="use the format 317-555-1212" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <!-- Search input-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="alternatePhone">Alternate Phone</label>
+          <label class="col-md-4 control-label" for="alternatePhone">Patient Alternate Phone</label>
           <div class="col-md-4">
             <input id="alternatePhone" name="alternatePhone" placeholder="use the format 317-555-1212" class="form-control input-md" type="search">
           </div>
         </div>
         <!-- Search input-->
-        <div class="form-group">
+        <!--<div class="form-group">
           <label class="col-md-4 control-label" for="email">Email</label>
           <div class="col-md-4">
             <input id="email" name="email" placeholder="email" class="form-control input-md" required="" type="search">
           </div>
-        </div>
+        </div>-->
         <!-- Multiple Radios (inline) -->
-        <div class="form-group">
+       <!-- <div class="form-group">
           <label class="col-md-4 control-label" for="radios">Subscribe to Mailing List</label>
           <div class="col-md-4"> 
             <label class="radio-inline" for="radios-0">
@@ -700,7 +763,7 @@ $(".num_appo").click(function(e){
               No
             </label>
           </div>
-        </div>
+        </div>-->
         <!-- Textarea -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="additionalNotes">Additional Notest and Questions</label>
@@ -712,14 +775,27 @@ $(".num_appo").click(function(e){
         <div class="form-group">
           <label class="col-md-4 control-label" for="howto">Recieve your immunization copy through</label>
           <div class="col-md-4"> 
-            <label class="radio-inline" for="howto-0">
-              <input name="howto" id="howto-0" value="1" checked="checked" type="radio" style="width:auto;"> 
-              email
-            </label> 
+            
             <label class="radio-inline" for="howto-1">
-              <input name="howto" id="howto-1" value="2" type="radio" style="width:auto;">
+              <input name="howto" id="howto-1" value="1" checked="checked" type="radio" style="width:auto;">
               fax
             </label>
+            <label class="radio-inline" for="howto-2">
+              <input name="howto" id="howto-2" value="2"  type="radio" style="width:auto;"> 
+              Pickup in person
+            </label>
+            <label class="radio-inline" for="howto-3">
+              <input name="howto" id="howto-3" value="3"  type="radio" style="width:auto;"> 
+              Other
+            </label> 
+            <input type="hidden" id=""/>
+          </div>
+        </div>
+        <div class="form-group" style="display: none;">
+          <label class="col-md-4 control-label" for="preferredOffice">Preferred Office</label>
+          <div class="col-md-4">
+            <select id="preferredOffice" name="preferredOffice" class="form-control">
+            </select>
           </div>
         </div>
       </fieldset>
@@ -759,43 +835,58 @@ $(".num_appo").click(function(e){
         </div>
         <!-- Select Basic -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="physician">Primary Care Physician</label>
+          <label class="col-md-4 control-label" for="physician">Physician Name</label>
           <div class="col-md-4">
-            <select id="physician" name="physician" class="form-control">
+            <select id="physician1" name="physician1" class="form-control">
+             <option value="">Select Physician</option>
+            <?php if(!empty($resu)){
+            	
+		          foreach ($resu as $key => $val) {
+		              //echo $val['illness'];
+		            //print_r($val);
+		            $res= $scad->getDocDetails($val['doctor_id']);
+		            foreach ($res as $key => $value) {
+            	?>
+            	<option value="<?php echo $val['doctor_id'];?>"><?php echo $value['firstname']." ".$value['lastname'];?></option>
+            <?php 	}
+            	}
+            	}
+             ?>
+            <option value="other">Other</option>
             </select>
+            <input type="hidden" name="physicianName1" id="physicianName1" value="" />
           </div>
         </div>
         <!-- Select Basic -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="preferredOffice">Preferred Office</label>
+          <label class="col-md-4 control-label" for="physicianfaxnumber1">Physician Fax Number</label>
           <div class="col-md-4">
-            <select id="preferredOffice" name="preferredOffice" class="form-control">
-            </select>
+            <input type="text" id="physicianfaxnumber1" name="physicianfaxnumber1" value=""/>
           </div>
         </div>
         <!-- Text input-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="contactNum">Primary Phone</label>  
+          <label class="col-md-4 control-label" for="contactNum">Patient Primary Phone</label>  
           <div class="col-md-4">
             <input id="contactNum" name="contactNum" placeholder="use the format 317-555-1212" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <!-- Search input-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="alternatePhone">Alternate Phone</label>
+          <label class="col-md-4 control-label" for="alternatePhone">Patient Alternate Phone</label>
           <div class="col-md-4">
             <input id="alternatePhone" name="alternatePhone" placeholder="use the format 317-555-1212" class="form-control input-md" type="text">
           </div>
         </div>
         <!-- Search input-->
-        <div class="form-group">
+        <!--<div class="form-group">
           <label class="col-md-4 control-label" for="email">Email</label>
           <div class="col-md-4">
             <input id="email" name="email" placeholder="email" class="form-control input-md" required="" type="email">
           </div>
-        </div>
+        </div>-->
         <!-- Multiple Radios (inline) -->
-        <div class="form-group">
+        <!--<div class="form-group">
           <label class="col-md-4 control-label" for="radios">Subscribe to Mailing List</label>
           <div class="col-md-4"> 
             <label class="radio-inline" for="radios-0">
@@ -807,7 +898,7 @@ $(".num_appo").click(function(e){
               No
             </label>
           </div>
-        </div>
+        </div>-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="medicationReq">Medication Requested</label>
           <div class="col-md-4">
@@ -845,6 +936,17 @@ $(".num_appo").click(function(e){
               <input name="howto" id="howto-1" value="2" type="radio" style="width:auto;">
               Pick Up in Person
             </label>
+            <label class="radio-inline" for="howto-1">
+              <input name="howto" id="howto-2" value="3" type="radio" style="width:auto;">
+              Other
+            </label>
+          </div>
+        </div>
+        <div class="form-group" style="display: none">
+          <label class="col-md-4 control-label" for="preferredOffice">Preferred Office</label>
+          <div class="col-md-4">
+            <select id="preferredOffice" name="preferredOffice" class="form-control">
+            </select>
           </div>
         </div>
       </fieldset>
