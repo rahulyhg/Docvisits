@@ -2,7 +2,7 @@
 include("service/ui/common/header_pat_home.php"); 
 $result = $scad->getUserDetails($_SESSION['userID']); 
 $resu = $scad->getDetails($_SESSION['userID']);
-//echo "<pre>";print_r($resu);exit;
+//echo "<pre>";print_r($result);exit;
 foreach ($resu as $key => $value) {
   $ids[]=$value['doctor_id'];
   $res[]= $scad->getDocDetails($value['doctor_id']);
@@ -289,6 +289,7 @@ $(".num_appo").click(function(e){
 	                  	$('#physicianName').val("");
 	                  	$('#physicianfaxnumber').val("");
 	                    $('#physicianName').get(0).type = 'text';
+	                     $("#physicianfaxnumber").removeAttr("disabled", "disabled"); 
 	                  }else{
 	                  	$.ajax({
 					      type: "POST",
@@ -297,10 +298,11 @@ $(".num_appo").click(function(e){
 					      success: function(msg)
 					      {	
 					      obj = jQuery.parseJSON(msg);
-                            console.log(obj.id);
+                            console.log(obj.efax);
                             //loading_hide();
-                           /*$('#physicianfaxnumber').val(msg.address);
-                           $('#physicianfaxnumber').val(msg.fax);*/
+                          // $('#physicianfaxnumber').val(msg.address);
+                           $('#physicianfaxnumber').val(obj.efax);
+                            $("#physicianfaxnumber").attr("disabled", "disabled"); 
                           }
 					    });
 	                  	$('#physicianName').get(0).type = 'hidden';
@@ -313,6 +315,7 @@ $(".num_appo").click(function(e){
 	                  	$('#physicianName1').val("");
 	                  	$('#physicianfaxnumber1').val("");
 	                    $('#physicianName1').get(0).type = 'text';
+	                    $("#physicianfaxnumber1").removeAttr("disabled", "disabled"); 
 	                  }else{
 	                  	$.ajax({
 					      type: "POST",
@@ -323,8 +326,9 @@ $(".num_appo").click(function(e){
 					      obj = jQuery.parseJSON(msg);
                             console.log(obj.id);
                             //loading_hide();
-                           /*$('#physicianfaxnumber').val(msg.address);
-                           $('#physicianfaxnumber').val(msg.fax);*/
+                          // $('#physicianfaxnumber1').val(msg.address);
+                          $("#physicianfaxnumber1").attr("disabled", "disabled"); 
+                           $('#physicianfaxnumber1').val(obj.efax);
                           }
 					    });
 	                  	$('#physicianName1').get(0).type = 'hidden';
@@ -500,7 +504,7 @@ $(".num_appo").click(function(e){
                     <?php $distance="Invalid Distance, too far";
                     
 					    try {
-					        $url = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins='.urlencode($_SESSION['userAddress']).'&destinations='.urlencode($value["mapAddress"]).'&key=AIzaSyDtCtNnx_y65T5gdUE2lkZ-fN8v2F86lfY';
+					         $url = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins='.urlencode($result['address']).'&destinations='.urlencode($value["address"]).'&key=AIzaSyDtCtNnx_y65T5gdUE2lkZ-fN8v2F86lfY';
 					        $obj = json_decode(file_get_contents($url), true);
 					        if($obj['status'] == 'OK'){
 					            $distance=$obj['rows'][0]['elements'][0]['distance']['text'];
