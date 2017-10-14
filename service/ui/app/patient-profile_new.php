@@ -335,6 +335,98 @@ $(".num_appo").click(function(e){
 	                    $('#physicianName1').val(doc);
 	                  }
                   });
+$(document).on('click', '#Submit_req', function(e) {
+  		var pt_name = $('#patient_name_req').val();
+  		var pt_dob = $('#DateOfBirth_req').val();
+  		var pt_prname = $('#parentName_req').val();
+  		var pt_phyname = $('#physicianName').val();
+  		var phy_fax = $('#physicianfaxnumber').val();
+  		var pt_cnct_1 = $('#contactNum_req').val();
+  		var pt_cnct_2 = $('#alternatePhone_req').val();
+  		var pt_note = $('#additionalNotes_req').val();
+  		var pt_office = $('#preferredOffice_req :selected').val();
+  		$("#fax_response .apo_con").html('');
+      	$.ajax({
+	      type: "POST",
+	      url: SITEURL+'patient/efax',
+	      data: {"name" :pt_name,"dob" :pt_dob,"perent_name" :pt_prname,"phy_name" :pt_phyname,"fax_num" :phy_fax,"number1" :pt_cnct_1,"number2" :pt_cnct_2,"note" :pt_note,"office_address" :pt_office,"req":'1'},
+	      success: function(msg)
+	      {	
+	     		$("#fax_response .apo_con").html(msg);$('#fax_response').modal('show');        
+          }
+	    });
+      	
+  });
+ $(document).on('click', '#fax_response .ball', function(e) {
+ 		location.reload();
+ });	
+/* $(document).on('click', '#howto_riff0', function(e) {
+ 	alert("ddd")
+            $('#howto_div1').show();  
+            $('#howto_div2').hide();          
+ 
+	});*/	 
+/*$(document).on('click', '.radio-inline.riff', function(e) {
+            alert("ffff")
+            $('#howto_div2').show();  
+            $('#howto_div1').hide();          
+ 
+	});	*/
+ $(document).on('click', '#Submit_riff', function(e) {
+  		var pt_name = $('#name_riff').val();
+  		var pt_dob = $('#DateOfBirth_riff').val();
+  		var pt_prname = $('#parentName_riff').val();
+  		var pt_phyname = $('#physicianName').val();
+  		var phy_fax = $('#physicianfaxnumber').val();
+  		var pt_cnct_1 = $('#contactNum_riff').val();
+  		var pt_cnct_2 = $('#alternatePhone_riff').val();
+  		var pt_note = $('#additionalNotes_riff').val();
+  		var pt_office = $('#preferredOffice_riff :selected').val();
+  		var pt_medReq = $('#medReq').val();
+  		var pt_dose = $('#dose_riff').val();
+  		var pt_day = $('#days_riff').val();
+  		$("#fax_response .apo_con").html('');
+      	$.ajax({
+	      type: "POST",
+	      url: SITEURL+'patient/efax',
+	      data: {"name" :pt_name,"dob" :pt_dob,"perent_name" :pt_prname,"phy_name" :pt_phyname,"fax_num" :phy_fax,"number1" :pt_cnct_1,"number2" :pt_cnct_2,"note" :pt_note,"office_address" :pt_office,"medReq" :pt_medReq,"dose" :pt_dose,"days" :pt_day,"refill":'1'},
+	      success: function(msg)
+	      {	
+	     		$("#fax_response .apo_con").html(msg);$('#fax_response').modal('show');        
+     			 
+          }
+	    });
+      	
+  });
+ $(document).ready(function() {
+   $('input[name="howto_riff"]').click(function() {
+      if($(this).val() == '1') {
+            $('#howto_div1').show();  
+            $('#howto_div2').hide();          
+       	}
+       	else if($(this).val() == '2') { 
+       		$('#howto_div1').hide();
+            $('#howto_div2').show();   
+       	}else{
+			$('#howto_div1').hide();
+            $('#howto_div2').show();   
+		}
+   });
+   $('input[name="howto_req"]').click(function() {
+      if($(this).val() == '1') {
+            $('#howto_div_req1').show();  
+            $('#howto_div_req2').hide();          
+       	}
+       	else if($(this).val() == '2') { 
+       		$('#howto_div_req1').hide();
+            $('#howto_div_req2').show();   
+       	}else{
+			$('#howto_div_req1').hide();
+            $('#howto_div_req2').hide();   
+		}
+   });
+});
+
                 /*$('.dr_viw_clm2_rew .paginatin li.activ').live('click',function(){
                 	var doc = $("#dctid").val();
                   var page = $(this).attr('p');
@@ -678,27 +770,27 @@ $(".num_appo").click(function(e){
 </div>
 <div class="tabcontents">
   <div class="tab-pane" id="ImmunizationReq">
-    <form class="form-horizontal">
+    <form class="form-horizontal" id="immunization_form">
       <fieldset>
         <!-- Text input-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput">Patient Name</label>  
+          <label class="col-md-4 control-label" for="patient_name">Patient Name</label>  
           <div class="col-md-4">
-            <input id="textinput" name="textinput" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
+            <input id="patient_name_req" name="patient_name" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="DateOfBirth">Date of Birth</label>  
           <div class="col-md-4">
-            <input id="DateOfBirth" name="DateOfBirth" placeholder="Use the format MM/DD/YYY" class="form-control input-md" required="" type="text">
+            <input id="DateOfBirth_req" name="DateOfBirth" placeholder="Use the format MM/DD/YYY" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="parentName">Parent or Guardian's Name</label>  
           <div class="col-md-4">
-            <input id="parentName" name="parentName" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
+            <input id="parentName_req" name="parentName" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <!-- Select Basic -->
@@ -736,14 +828,14 @@ $(".num_appo").click(function(e){
         <div class="form-group">
           <label class="col-md-4 control-label" for="contactNum">Patient Primary Phone</label>  
           <div class="col-md-4">
-            <input id="contactNum" name="contactNum" placeholder="use the format 317-555-1212" class="form-control input-md" required="" type="text">
+            <input id="contactNum_req" name="contactNum" placeholder="use the format 317-555-1212" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <!-- Search input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="alternatePhone">Patient Alternate Phone</label>
           <div class="col-md-4">
-            <input id="alternatePhone" name="alternatePhone" placeholder="use the format 317-555-1212" class="form-control input-md" type="search">
+            <input id="alternatePhone_req" name="alternatePhone" placeholder="use the format 317-555-1212" class="form-control input-md" type="search">
           </div>
         </div>
         <!-- Search input-->
@@ -772,7 +864,7 @@ $(".num_appo").click(function(e){
         <div class="form-group">
           <label class="col-md-4 control-label" for="additionalNotes">Additional Notest and Questions</label>
           <div class="col-md-4">                     
-            <textarea class="form-control" id="additionalNotes" name="additionalNotes"></textarea>
+            <textarea class="form-control" id="additionalNotes_req" name="additionalNotes"></textarea>
           </div>
         </div>
         <!-- Multiple Radios (inline) -->
@@ -781,24 +873,30 @@ $(".num_appo").click(function(e){
           <div class="col-md-4"> 
             
             <label class="radio-inline" for="howto-1">
-              <input name="howto" id="howto-1" value="1" checked="checked" type="radio" style="width:auto;">
+              <input name="howto_req" id="howto-1" value="1"  type="radio" style="width:auto;">
               fax
             </label>
             <label class="radio-inline" for="howto-2">
-              <input name="howto" id="howto-2" value="2"  type="radio" style="width:auto;"> 
+              <input name="howto_req" id="howto-2" value="2"  type="radio" style="width:auto;"> 
               Pickup in person
             </label>
-            <label class="radio-inline" for="howto-3">
-              <input name="howto" id="howto-3" value="3"  type="radio" style="width:auto;"> 
+            <!--<label class="radio-inline" for="howto-3">
+              <input name="howto_req" id="howto-3" value="3"  type="radio" style="width:auto;"> 
               Other
-            </label> 
+            </label> -->
             <input type="hidden" id=""/>
           </div>
         </div>
-        <div class="form-group" style="display: none;">
+        <div class="form-group" id="howto_div_req1" style="display: none;" >
+          <label class="col-md-4 control-label" for="faxnumber">Fax number</label>
+          <div class="col-md-4">
+            <input type="text" name="faxnumber" id="faxnumber"/>
+          </div>
+        </div>
+        <div class="form-group" id="howto_div_req2" style="display: none;" >
           <label class="col-md-4 control-label" for="preferredOffice">Preferred Office</label>
           <div class="col-md-4">
-            <select id="preferredOffice" name="preferredOffice" class="form-control">
+            <select id="preferredOffice_req" name="preferredOffice" class="form-control">
             </select>
           </div>
         </div>
@@ -806,7 +904,7 @@ $(".num_appo").click(function(e){
       <div class="form-group">
         <label class="col-md-4 control-label" for="Submit"></label>
         <div class="col-md-4">
-          <button id="Submit" name="Submit" class="btn btn-primary">Submit</button>
+          <input style="border:none" type="button" value="submit" class="btn btn-primary" id="Submit_req">
         </div>
       </div>
     </form>
@@ -820,21 +918,21 @@ $(".num_appo").click(function(e){
         <div class="form-group">
           <label class="col-md-4 control-label" for="textinput">Patient Name</label>  
           <div class="col-md-4">
-            <input id="textinput" name="textinput" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
+            <input id="name_riff" name="textinput" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="DateOfBirth">Date of Birth</label>  
           <div class="col-md-4">
-            <input id="DateOfBirth" name="DateOfBirth" placeholder="Use the format MM/DD/YYY" class="form-control input-md" required="" type="text">
+            <input id="DateOfBirth_riff" name="DateOfBirth" placeholder="Use the format MM/DD/YYY" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="parentName">Parent or Guardian's Name</label>  
           <div class="col-md-4">
-            <input id="parentName" name="parentName" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
+            <input id="parentName_riff" name="parentName" placeholder="Give first and last names" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <!-- Select Basic -->
@@ -872,14 +970,14 @@ $(".num_appo").click(function(e){
         <div class="form-group">
           <label class="col-md-4 control-label" for="contactNum">Patient Primary Phone</label>  
           <div class="col-md-4">
-            <input id="contactNum" name="contactNum" placeholder="use the format 317-555-1212" class="form-control input-md" required="" type="text">
+            <input id="contactNum_riff" name="contactNum" placeholder="use the format 317-555-1212" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <!-- Search input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="alternatePhone">Patient Alternate Phone</label>
           <div class="col-md-4">
-            <input id="alternatePhone" name="alternatePhone" placeholder="use the format 317-555-1212" class="form-control input-md" type="text">
+            <input id="alternatePhone_riff" name="alternatePhone" placeholder="use the format 317-555-1212" class="form-control input-md" type="text">
           </div>
         </div>
         <!-- Search input-->
@@ -912,13 +1010,13 @@ $(".num_appo").click(function(e){
         <div class="form-group">
           <label class="col-md-4 control-label" for="dose">Dosage</label>
           <div class="col-md-4">
-            <input id="dose" name="dose" placeholder="Dose" class="form-control input-md" required="" type="text">
+            <input id="dose_riff" name="dose" placeholder="Dose" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4 control-label" for="days">Days Supply</label>
           <div class="col-md-4">
-            <input id="days" name="days" placeholder="No of Days" class="form-control input-md" required="" type="text">
+            <input id="days_riff" name="days" placeholder="No of Days" class="form-control input-md" required="" type="text">
           </div>
         </div>
         <!-- Textarea -->
@@ -932,24 +1030,38 @@ $(".num_appo").click(function(e){
         <div class="form-group">
           <label class="col-md-4 control-label" for="howto">Prescription Delivery Options</label>
           <div class="col-md-4"> 
-            <label class="radio-inline" for="howto-0">
-              <input name="howto" id="howto-0" value="1" checked="checked" type="radio" style="width:auto;">
+            <label class="radio-inline riff" for="howto-0">
+              <input name="howto_riff" id="howto_riff0" value="1" type="radio" style="width:auto;">
               Call in to Pharmacy
             </label> 
-            <label class="radio-inline" for="howto-1">
-              <input name="howto" id="howto-1" value="2" type="radio" style="width:auto;">
+            <label class="radio-inline riff" for="howto-1">
+              <input name="howto_riff" id="howto_riff1" value="2" type="radio" style="width:auto;">
               Pick Up in Person
             </label>
-            <label class="radio-inline" for="howto-1">
-              <input name="howto" id="howto-2" value="3" type="radio" style="width:auto;">
+            <!--<label class="radio-inline" for="howto-1">
+              <input name="howto_riff" id="howto-2" value="3" type="radio" style="width:auto;">
               Other
-            </label>
+            </label>-->
           </div>
         </div>
-        <div class="form-group" style="display: none">
+        <div id="howto_div1" style="display: none;">
+        <div class="form-group" >
+          <label class="col-md-4 control-label" for="pharmacyname">Pharmacy Name Address</label>
+          <div class="col-md-4">
+            <input type="text" id="pharmacyname" name="pharmacyname" placeholder="Pharmacy Name Address"/>
+          </div>
+        </div>
+        <div class="form-group" >
+          <label class="col-md-4 control-label" for="pharmacyphon">Pharmacy Phone Number</label>
+          <div class="col-md-4">
+            <input type="text" id="pharmacyphon" name="pharmacyphon" placeholder="Pharmacy Phone Number"/>
+          </div>
+        </div>
+        </div>
+        <div class="form-group" id="howto_div2" style="display: none;">
           <label class="col-md-4 control-label" for="preferredOffice">Preferred Office</label>
           <div class="col-md-4">
-            <select id="preferredOffice" name="preferredOffice" class="form-control">
+            <select id="preferredOffice_riff" name="preferredOffice" class="form-control">
             </select>
           </div>
         </div>
@@ -958,7 +1070,7 @@ $(".num_appo").click(function(e){
     <div class="form-group">
       <label class="col-md-4 control-label" for="Submit"></label>
       <div class="col-md-4">
-        <button id="Submit" name="Submit" class="btn btn-primary">Submit</button>
+        <input style="border:none" type="button" value="submit" class="btn btn-primary" id="Submit_riff">
       </div>
     </div>
   </form>
@@ -980,6 +1092,21 @@ $(".num_appo").click(function(e){
 </div><!-- /.modal-dialog -->
 </div>
 <div class="modal fade" tabindex="-1" role="dialog" id="appoinment_pop">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+       <div class="ball" data-dismiss="modal" aria-label="Close">
+        <a href="javascript:void(0);"> <img src="<?php echo WEB_ROOT;?>service/public/images/images/ballinto.png"></a>
+      </div>
+      <div class="appoinment_pop_main" style="background-color:#FFF; border-radius:6px;">
+       <div class="popup_load apo" style="display:none;z-index:999;"></div>
+       <div class="apo_con"></div>
+     </div>
+   </div>
+ </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="fax_response">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body">

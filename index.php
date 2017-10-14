@@ -533,6 +533,23 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
 		
 
 	});
+	$app->post('/patient/efax', function () use ($app) {
+
+		include("conf/config.inc.php");
+
+		$request	= \Slim\Slim::getInstance()->request();
+
+		$postData =  $request->get();
+
+		if($_SESSION['userType']==2){
+
+			$app->render('send-efax-doctor.php',$postData);
+
+		}
+
+		
+
+	});
 
 	$app->get('/admin/user-server-response', function () use ($app) {
 
