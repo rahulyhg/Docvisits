@@ -1,10 +1,13 @@
 <?php
 include("conf/config.inc.php");
 $id = $_SESSION['userID'];
+
 $data = $_POST;
- //print_r($data);exit;
+ 
 if(isset($data['req']) && $data['req'] != ""){
-	
+
+$doc = $scad->getDocDetails($data['phy_name']);
+//print_r($doc[0]['email']);exit;
 $content = "<!DOCTYPE html>
 <html>
 <head>
@@ -80,21 +83,21 @@ $xml = "<?xml version=\"1.0\"?>
 			<FaxHeader>\"@DATE1 @TIME3 @ROUTETO{26} @RCVRFAX Pg%P/@TPAGES\"</FaxHeader>
 		</TransmissionControl>
 		<DispositionControl>
-			<DispositionURL>http://realrajmahalmasala.com</DispositionURL>
+			<DispositionURL>http://docvisits.com</DispositionURL>
 			<DispositionLevel>BOTH</DispositionLevel>
 			<DispositionMethod>EMAIL</DispositionMethod>
 			<DispositionEmails>
 				<DispositionEmail>
-					<DispositionRecipient>docvisit732</DispositionRecipient>
-					<DispositionAddress>saeedmohamed451@yahoo.com</DispositionAddress>
+					<DispositionRecipient>".$doc[0]['firstname']." ".$doc[0]['lastname']."</DispositionRecipient>
+					<DispositionAddress>".$doc[0]['email']."</DispositionAddress>
 				</DispositionEmail>
 			</DispositionEmails>
 		</DispositionControl>
 		<Recipients>
 			<Recipient>
-				<RecipientName>Mohamed Saeed</RecipientName>
-				<RecipientCompany>Saeed</RecipientCompany>
-				<RecipientFax>7328621191</RecipientFax>
+				<RecipientName>".$data['name']."</RecipientName>
+				<RecipientCompany>docvisits</RecipientCompany>
+				<RecipientFax>".$doc[0]['efax']."</RecipientFax>
 			</Recipient>
 		</Recipients>
 		<Files>
@@ -131,6 +134,7 @@ $ret=curl_exec($conn);
 echo $ret;
 curl_close($conn);
 }else if(isset($data['refill']) && $data['refill'] != ""){
+	$doc = $scad->getDocDetails($data['phy_name']);
 	$content = "<!DOCTYPE html>
 <html>
 <head>
@@ -218,21 +222,21 @@ $xml = "<?xml version=\"1.0\"?>
 			<FaxHeader>\"@DATE1 @TIME3 @ROUTETO{26} @RCVRFAX Pg%P/@TPAGES\"</FaxHeader>
 		</TransmissionControl>
 		<DispositionControl>
-			<DispositionURL>http://realrajmahalmasala.com</DispositionURL>
+			<DispositionURL>http://docvisits.com</DispositionURL>
 			<DispositionLevel>BOTH</DispositionLevel>
 			<DispositionMethod>EMAIL</DispositionMethod>
 			<DispositionEmails>
 				<DispositionEmail>
-					<DispositionRecipient>docvisit732</DispositionRecipient>
-					<DispositionAddress>saeedmohamed451@yahoo.com</DispositionAddress>
+					<DispositionRecipient>".$doc[0]['firstname']." ".$doc[0]['lastname']."</DispositionRecipient>
+					<DispositionAddress>".$doc[0]['email']."</DispositionAddress>
 				</DispositionEmail>
 			</DispositionEmails>
 		</DispositionControl>
 		<Recipients>
 			<Recipient>
-				<RecipientName>Mohamed Saeed</RecipientName>
-				<RecipientCompany>Saeed</RecipientCompany>
-				<RecipientFax>7328621191</RecipientFax>
+				<RecipientName>".$data['name']."</RecipientName>
+				<RecipientCompany>docvisits</RecipientCompany>
+				<RecipientFax>".$doc[0]['efax']."</RecipientFax>
 			</Recipient>
 		</Recipients>
 		<Files>
