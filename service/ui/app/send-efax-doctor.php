@@ -89,7 +89,7 @@ $xml = "<?xml version=\"1.0\"?>
 			<DispositionEmails>
 				<DispositionEmail>
 					<DispositionRecipient>".$doc[0]['firstname']." ".$doc[0]['lastname']."</DispositionRecipient>
-					<DispositionAddress>".$doc[0]['email']."</DispositionAddress>
+					<DispositionAddress>sridhar749@gmail.com</DispositionAddress>
 				</DispositionEmail>
 			</DispositionEmails>
 		</DispositionControl>
@@ -97,7 +97,7 @@ $xml = "<?xml version=\"1.0\"?>
 			<Recipient>
 				<RecipientName>".$data['name']."</RecipientName>
 				<RecipientCompany>docvisits</RecipientCompany>
-				<RecipientFax>".$doc[0]['efax']."</RecipientFax>
+				<RecipientFax>7328621191</RecipientFax> 
 			</Recipient>
 		</Recipients>
 		<Files>
@@ -228,7 +228,7 @@ $xml = "<?xml version=\"1.0\"?>
 			<DispositionEmails>
 				<DispositionEmail>
 					<DispositionRecipient>".$doc[0]['firstname']." ".$doc[0]['lastname']."</DispositionRecipient>
-					<DispositionAddress>".$doc[0]['email']."</DispositionAddress>
+					<DispositionAddress>sridhar749@gmail.com</DispositionAddress>
 				</DispositionEmail>
 			</DispositionEmails>
 		</DispositionControl>
@@ -236,7 +236,7 @@ $xml = "<?xml version=\"1.0\"?>
 			<Recipient>
 				<RecipientName>".$data['name']."</RecipientName>
 				<RecipientCompany>docvisits</RecipientCompany>
-				<RecipientFax>".$doc[0]['efax']."</RecipientFax>
+				<RecipientFax>7328621191</RecipientFax>
 			</Recipient>
 		</Recipients>
 		<Files>
