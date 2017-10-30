@@ -5,23 +5,26 @@ $page     = $_POST['sum'];
 $value = $scad->getUserDetails($page);
 $img = $scad->getDocProImg($page);
 $spcl = $scad->getDocSpeciality($page);
-if(!empty($img[name])){
-	$imageName = $img[name];
+if(!empty($img['name'])){
+	$imageName = $img['name'];
 }
 else{
   $imageName = 'no_image.jpg';
 }
-?>
-<?php
 $rtng=$scad->userting($_REQUEST['sum'],$_SESSION['userID']);
+$overAll = ((int)$rtng['beside']+(int)$rtng['ansque']+(int)$rtng['spend']+(int)$rtng['office']+(int)$rtng['staff']+(int)$rtng['waiting'])/6;
+$final_overall = round($overAll);
 ?>
 
+
 <div class="modal-dialog modal-lg">
-  <div class="modal-content" style="float: left;">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title">Rating Details</h4>
-    </div>
+  <div class="modal-content" style="float: left;   max-height: 43vw;">
+    
+    <div class="modal-body">
+    <div class="ball" data-dismiss="modal" aria-label="Close">
+        <a href="javascript:void(0);"> <img src="<?php echo WEB_ROOT;?>service/public/images/images/ballinto.png"></a>
+      </div>
+     
     <div class="col-md-7 col-sm-7 col-xs-12">
       <div class="row">
         <form> 
@@ -31,11 +34,11 @@ $rtng=$scad->userting($_REQUEST['sum'],$_SESSION['userID']);
              <div class="inputwrap">
               <fieldset class="popup-rating one">
                 <legend>Over all Rating</legend>
-                <input type="radio" id="star5" name="rating" value="5" <?php if($rtng['overall']==5){echo "checked ";}  ?>/><label for="star5" title="Rocks!"><span>&#9733</span></label>
-                <input type="radio" id="star4" name="rating" value="4" <?php if($rtng['overall']==4){echo "checked ";}  ?>/><label for="star4" title="Pretty good"><span>&#9733</span></label>
-                <input type="radio" id="star3" name="rating" value="3" <?php if($rtng['overall']==3){echo "checked ";}  ?>/><label for="star3" title="Meh"><span>&#9733</span></label>
-                <input type="radio" id="star2" name="rating" value="2" <?php if($rtng['overall']==2){echo "checked ";}  ?>/><label for="star2" title="Kinda bad"><span>&#9733</span></label>
-                <input type="radio" id="star1" name="rating" value="1" <?php if($rtng['overall']==1){echo "checked ";}  ?>/><label for="star1" title="Sucks big time"><span>&#9733</span></label>
+                <input type="radio" id="star5" name="rating" value="5" disabled="disabled" <?php if($final_overall==5){echo "checked ";}  ?>/><label for="star5" title="Rocks!"><span>&#9733</span></label>
+                <input type="radio" id="star4" name="rating" value="4" disabled="disabled" <?php if($final_overall==4){echo "checked ";}  ?>/><label for="star4" title="Pretty good"><span>&#9733</span></label>
+                <input type="radio" id="star3" name="rating" value="3" disabled="disabled" <?php if($final_overall==3){echo "checked ";}  ?>/><label for="star3" title="Meh"><span>&#9733</span></label>
+                <input type="radio" id="star2" name="rating" value="2" disabled="disabled" <?php if($final_overall==2){echo "checked ";}  ?>/><label for="star2" title="Kinda bad"><span>&#9733</span></label>
+                <input type="radio" id="star1" name="rating" value="1" disabled="disabled" <?php if($final_overall==1){echo "checked ";}  ?>/><label for="star1" title="Sucks big time"><span>&#9733</span></label>
               </fieldset>
               <fieldset class="popup-rating two">
                 <legend>Explains condition(s) well</legend>
@@ -54,7 +57,7 @@ $rtng=$scad->userting($_REQUEST['sum'],$_SESSION['userID']);
                 <input type="radio" id="star1-2" name="rating4" value="1" <?php if($rtng['ansque']==1){echo "checked ";}  ?>/><label for="star1-2" title="Sucks big time"><span>&#9733</span></label>
               </fieldset>
               
-              <fieldset class="popup-rating three">
+              <fieldset class="popup-rating four">
                 <legend>Spend time</legend>
                 <input type="radio" id="star5-3" name="rating5" value="5" <?php if($rtng['spend']==5){echo "checked ";}  ?>/><label for="star5-3" title="Rocks!"><span>&#9733</span></label>
                 <input type="radio" id="star4-3" name="rating5" value="4" <?php if($rtng['spend']==4){echo "checked ";}  ?>/><label for="star4-3" title="Pretty good"><span>&#9733</span></label>
@@ -62,7 +65,7 @@ $rtng=$scad->userting($_REQUEST['sum'],$_SESSION['userID']);
                 <input type="radio" id="star2-3" name="rating5" value="2" <?php if($rtng['spend']==2){echo "checked ";}  ?>/><label for="star2-3" title="Kinda bad"><span>&#9733</span></label>
                 <input type="radio" id="star1-3" name="rating5" value="1" <?php if($rtng['spend']==1){echo "checked ";}  ?>/><label for="star1-3" title="Sucks big time"><span>&#9733</span></label>
               </fieldset>
-              <fieldset class="popup-rating three">
+              <fieldset class="popup-rating five">
                 <legend>Office environment</legend>
                 <input type="radio" id="star5-4" name="rating6" value="5" <?php if($rtng['office']==5){echo "checked ";}  ?>/><label for="star5-4" title="Rocks!"><span>&#9733</span></label>
                 <input type="radio" id="star4-4" name="rating6" value="4" <?php if($rtng['office']==4){echo "checked ";}  ?>/><label for="star4-4" title="Pretty good"><span>&#9733</span></label>
@@ -70,7 +73,7 @@ $rtng=$scad->userting($_REQUEST['sum'],$_SESSION['userID']);
                 <input type="radio" id="star2-4" name="rating6" value="2" <?php if($rtng['office']==2){echo "checked ";}  ?>/><label for="star2-4" title="Kinda bad"><span>&#9733</span></label>
                 <input type="radio" id="star1-4" name="rating6" value="1" <?php if($rtng['office']==1){echo "checked ";}  ?>/><label for="star1-4" title="Sucks big time"><span>&#9733</span></label>
               </fieldset>
-              <fieldset class="popup-rating three">
+              <fieldset class="popup-rating six">
                 <legend>Staff friendliness</legend>
                 <input type="radio" id="star5-5" name="rating7" value="5" <?php if($rtng['staff']==5){echo "checked ";}  ?>/><label for="star5-5" title="Rocks!"><span>&#9733</span></label>
                 <input type="radio" id="star4-5" name="rating7" value="4" <?php if($rtng['staff']==4){echo "checked ";}  ?>/><label for="star4-5" title="Pretty good"><span>&#9733</span></label>
@@ -79,7 +82,7 @@ $rtng=$scad->userting($_REQUEST['sum'],$_SESSION['userID']);
                 <input type="radio" id="star1-5" name="rating7" value="1" <?php if($rtng['staff']==1){echo "checked ";}  ?>/><label for="star1-5" title="Sucks big time"><span>&#9733</span></label>
               </fieldset>
               
-              <fieldset class="popup-rating three">
+              <fieldset class="popup-rating seven">
                 <legend>Wait Time</legend>
                 <input type="radio" id="star5-6" name="rating3" value="5" <?php if($rtng['waiting']==5){echo "checked ";}  ?>/><label for="star5-6" title="Rocks!"><span>&#9733</span></label>
                 <input type="radio" id="star4-6" name="rating3" value="4" <?php if($rtng['waiting']==4){echo "checked ";}  ?>/><label for="star4-6" title="Pretty good"><span>&#9733</span></label>
@@ -95,7 +98,7 @@ $rtng=$scad->userting($_REQUEST['sum'],$_SESSION['userID']);
               </label>
               <textarea id="message" placeholder="Your Message to Us" cols="53" rows="3"><?php echo $rtng['message'];?></textarea>
             </div>
-            <div style="width: 100%;margin:5px auto;"> 
+            <div style="width: 100%;margin:25px 0 0 0;"> 
 				<input type="hidden" name="update" id="update" value="<?php if($rtng>0){echo '1';}else{echo '0';} ?>"/>
               <input style="border:none" type="button" value="submit" class="lg_btn submit"  id="submit">
             </div>
@@ -106,9 +109,10 @@ $rtng=$scad->userting($_REQUEST['sum'],$_SESSION['userID']);
         </form>
       </div>
     </div>
+    </div>
 	
   </div>
-  <div class="col-md-5 col-sm-5 col-xs-12" style="border-left: 2px solid rgb(230, 230, 230);float: left;"> 
+  <div class="col-md-5 col-sm-5 col-xs-12" style="border-left: 2px solid rgb(230, 230, 230);float: left;margin-top: -25px; padding-bottom: 35px;"> 
 	
     <div class="dr_viw_clm2_rew">
     </div>

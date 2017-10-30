@@ -37,14 +37,16 @@ $res= $scad->getDocDetails($_REQUEST['sum']);
                 <td data-label="Doc Name" ><?php echo $docName;?></td>            
                 <td data-label="Illness"class="name"><?php echo $val['apnt_note'];?></td>
                 <td data-label="Appoinment Date"><?php $newDate = date("M-d-Y", strtotime($val['apnt_date'])); $newTime = date("H:i a", strtotime($val['apnt_starttime'])); $fianDate = $newDate." ".$newTime;echo $newDate." / ".$newTime;?></td>
-               <td data-label="status"><?php $status = $val['status'];
-               
-               	if(strtotime("now") < strtotime($fianDate)){
-					echo '<a href="'.WEB_ROOT.'index.php/patient/check-in-online-form" >check-in-online</a>';
-				}if(strtotime("now") > strtotime($fianDate)){
-					echo "Completed";
-				}
-                ?></td>
+               <td data-label="status">
+				<?php 
+						$fianDate = date("M-d-Y H:i:s", strtotime($val['apnt_date'].' '.$val['apnt_starttime']));  
+						
+					if(strtotime("now") < strtotime($fianDate)){
+						echo '<a href="'.WEB_ROOT.'index.php/patient/select-doctor" >check-in-online</a>';
+					}if(strtotime("now") > strtotime($fianDate)){
+						echo "Completed";
+					}
+					?></td>
                 </tr>
                 <?php           
               //}

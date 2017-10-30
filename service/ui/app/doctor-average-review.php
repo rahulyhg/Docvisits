@@ -14,13 +14,6 @@ for($k=0;$k<count($overall[$_POST['id']]);$k++){
 }
 $doc_rating = round($rateval/count($overall[$_POST['id']]));
 ?>
-<input type="radio" <?php if($doc_rating==5){echo "checked ";}  ?> name="rating-input-<?php echo $i; ?>-5" id="rating-input-<?php echo $i; ?>-5" class="rating-input">
-<label class="rating-star" for="rating-input-<?php echo $i; ?>-5"></label>
-<input type="radio" <?php if($doc_rating==4){echo "checked ";}  ?> name="rating-input-<?php echo $i; ?>-4" id="rating-input-<?php echo $i; ?>-4" class="rating-input">
-<label class="rating-star" for="rating-input-<?php echo $i; ?>-4"></label>
-<input type="radio" <?php if($doc_rating==3){echo "checked ";}  ?> name="rating-input-<?php echo $i; ?>-3" id="rating-input-<?php echo $i; ?>-3" class="rating-input">
-<label class="rating-star" for="rating-input-<?php echo $i; ?>-3"></label>
-<input type="radio" <?php if($doc_rating==2){echo "checked ";}  ?> name="rating-input-<?php echo $i; ?>-2" id="rating-input-<?php echo $i; ?>-2" class="rating-input">
-<label class="rating-star" for="rating-input-<?php echo $i; ?>-2"></label>
-<input <?php if($doc_rating==1){echo "checked ";}  ?> type="radio" name="rating-input-<?php echo $i; ?>-1" id="rating-input-<?php echo $i; ?>-1" class="rating-input">
-<label class="rating-star" for="rating-input-<?php echo $i; ?>-1"></label>
+<span class="tg-stars star-rating">
+	<span  class="ratng" target="<?php echo $val['doctor_id'];?>" style="width:<?php echo (ceil($doc_rating*26.6))?>%;line-height:20px;" ></span>
+</span>

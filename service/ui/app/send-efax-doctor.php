@@ -8,6 +8,7 @@ if(isset($data['req']) && $data['req'] != ""){
 
 $doc = $scad->getDocDetails($data['phy_name']);
 //print_r($doc[0]['email']);exit;
+//echo str_replace("-","",$data['fax_num']);exit;
 $content = "<!DOCTYPE html>
 <html>
 <head>
@@ -97,7 +98,7 @@ $xml = "<?xml version=\"1.0\"?>
 			<Recipient>
 				<RecipientName>".$data['name']."</RecipientName>
 				<RecipientCompany>docvisits</RecipientCompany>
-				<RecipientFax>7328621191</RecipientFax> 
+				<RecipientFax>".str_replace("-","",$data['fax_num'])."</RecipientFax> 
 			</Recipient>
 		</Recipients>
 		<Files>
@@ -236,7 +237,7 @@ $xml = "<?xml version=\"1.0\"?>
 			<Recipient>
 				<RecipientName>".$data['name']."</RecipientName>
 				<RecipientCompany>docvisits</RecipientCompany>
-				<RecipientFax>7328621191</RecipientFax>
+				<RecipientFax>".str_replace("-","",$data['fax_num'])."</RecipientFax>
 			</Recipient>
 		</Recipients>
 		<Files>
